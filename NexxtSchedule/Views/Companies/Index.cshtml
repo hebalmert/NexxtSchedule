@@ -1,0 +1,98 @@
+﻿@model IEnumerable<NexxtSchedule.Models.Company>
+
+@{
+    ViewBag.Title = @Resources.Resource.Company_ViewIndex_Titulo1;
+}
+
+    <h2>@Resources.Resource.Company_ViewIndex_Titulo1</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+    <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
+            '@Url.Action("Create", "Companies", new { })'">
+        <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
+    </button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Logo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rif)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country.Pais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDesde)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateHasta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @if (!string.IsNullOrEmpty(item.Logo))
+        {
+            <img src="@Url.Content(item.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+        }
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Rif)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Country.Pais)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateDesde)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateHasta)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Precio)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Activo)
+    </td>
+    <td>
+        @*@Html.ActionLink("Edit", "Edit", new { id = item.CompanyId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.CompanyId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.CompanyId })*@
+
+            <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+            '@Url.Action("Edit", "Companies", new { id = item.CompanyId})'">
+                <span class="glyphicon glyphicon-pencil"></span> 
+            </button>
+
+            <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+            '@Url.Action("Details", "Companies", new { id = item.CompanyId})'">
+                <span class="glyphicon glyphicon-list"></span> 
+            </button>
+
+            <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+            '@Url.Action("Delete", "Companies", new { id = item.CompanyId})'">
+                <span class="glyphicon glyphicon-trash"></span> 
+            </button>
+
+    </td>
+</tr>
+}
+
+</table>

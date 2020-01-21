@@ -1,0 +1,53 @@
+﻿@model IEnumerable<NexxtSchedule.Models.Identification>
+
+@{
+    ViewBag.Title = ViewBag.Title = @Resources.Resource.Identification_IndexView_Titulo1;
+}
+
+    <h2>ViewBag.Title = @Resources.Resource.Identification_IndexView_Titulo1</h2>
+
+    <p>
+        <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
+            '@Url.Action("Create", "Identifications", new { })'">
+            <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
+        </button>
+    </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoDocumento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoDocumento)
+        </td>
+        <td>
+            <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+            '@Url.Action("Edit", "Identifications", new { id = item.IdentificationId})'">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+
+            <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+            '@Url.Action("Details", "Identifications", new { id = item.IdentificationId})'">
+                <span class="glyphicon glyphicon-list"></span>
+            </button>
+
+            <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+            '@Url.Action("Delete", "Identifications", new { id = item.IdentificationId})'">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </td>
+    </tr>
+}
+
+</table>

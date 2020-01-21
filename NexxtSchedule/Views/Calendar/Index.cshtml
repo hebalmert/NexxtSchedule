@@ -1,0 +1,502 @@
+﻿@model NexxtSchedule.Models.ModelCalendar
+
+@{
+    ViewBag.Title = "Calendario";
+}
+<h2>Calendario</h2>
+
+<div>
+    <div class="col-md-12">
+        <div class="form-group">
+            <div class="col-md-12">
+                <table>
+                    <tr>
+                        <th>
+                            @Html.LabelFor(model => model.ProfessionalId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </th>
+                        <td>
+                            @Html.DropDownList("ProfessionalUp", null, htmlAttributes: new { @class = "form-control" })
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+</p>
+<p>
+    &ensp;
+</p>
+<div id="calender"></div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><span id="eventTitle"></span></h4>
+            </div>
+
+            <div class="modal-body">
+                <p id="pDetails"></p>
+            </div>
+
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-sm-6 text-left">
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
+                        </button>
+
+                        <button id="btnDelete" class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-trash"></span> Remove
+                        </button>
+
+                        <button id="btnEdit" class="btn btn-warning btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span> Edit
+                        </button>
+                        @*<button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModalSave" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Save Event</h4>
+            </div>
+
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <input type="hidden" id="hdEventID" value="0" />
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label>@Html.LabelFor(model => model.ProfessionalId, htmlAttributes: new { @class = "control-label col-md-2" })</label>
+                            @Html.DropDownList("ProfessionalId", null, htmlAttributes: new { @class = "form-control", @style = "width:280px" })
+                            @Html.ValidationMessageFor(model => model.ProfessionalId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label>@Html.LabelFor(model => model.ClientId, htmlAttributes: new { @class = "control-label col-md-2" })</label>
+                            @Html.DropDownList("ClientId", null, htmlAttributes: new { @class = "form-control", @style = "width:280px" })
+                            @Html.ValidationMessageFor(model => model.ClientId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label>Subject</label>
+                            <input type="text" id="txtSubject" class="form-control" style="width:280px" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label>Start</label>
+                            <div class="input-group date" id="dtp1" style="width:280px">
+                                <input type="text" id="txtStart" class="form-control" />
+                                <span class="input-group-addon datepicker-decades">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                <label><input type="checkbox" id="chkIsFullDay" checked="checked" />  Is Full Day event</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" id="divEndDate" style="display:none">
+                        <div class="col-md-10">
+                            <label>End</label>
+                            <div class="input-group date" id="dtp2" style="width:280px">
+                                <input type="text" id="txtEnd" class="form-control" />
+                                <span class="input-group-addon datepicker-decades">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <div>
+                                <label>Description</label>
+                                <textarea id="txtDescription" rows="3" class="form-control" , style="width:280px"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label>Theme Color</label>
+                            <select id="ddThemeColor" class="form-control">
+                                <option value="">Default</option>
+                                <option value="red">Red</option>
+                                <option value="blue">Blue</option>
+                                <option value="black">Black</option>
+                                <option value="green">Green</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p>
+                        @*<button type="button" id="btnSave" class="btn btn-primary btn-sm">Save</button>*@
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
+                        </button>
+
+                        <button type="button" id="btnSave" class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-floppy-disk"></span> @Resources.Resource.ButtonSave
+                        </button>
+                        @*<button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>*@
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
+@*<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />*@
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    @*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>*@
+    <script>
+
+        $(document).ready(function ()
+        {
+            var events = [];
+            var selectedEvent = null;
+            FetchEventAndRenderCalendar();
+            function FetchEventAndRenderCalendar()
+            {
+                events = [];
+                $.ajax({
+                    type: "GET",
+                    url: "/Calendar/GetEvents",
+                    dataType: 'json',
+                    success: function (data) {
+                        $.each(data, function (i, v)
+                        {
+                            events.push(
+                            {
+                                eventId: v.EventId,
+                                CompanyId: v.CompanyId,
+                                ProfessionalId: v.ProfessionalId,
+                                Profesional: v.Profesional,
+                                ClientId: v.ClientId,
+                                Cliente: v.Cliente,
+                                title: v.Subject,
+                                description: v.Description,
+                                start: moment(v.Start),
+                                end: v.End != null ? moment(v.End) : null,
+                                color: v.ThemeColor,
+                                allDay: v.IsFullDay
+                            });
+                        })
+                        GenerateCalender(events);
+                    },
+                    error: function (error) {
+                        alert('failed');
+                    }
+                })
+            }
+
+            $("#ProfessionalUp").change(function ()
+            {
+                var events = [];
+                var selectedEvent = null;
+                FetchEventAndRenderCalendar();
+                function FetchEventAndRenderCalendar()
+                {
+                    events = [];
+                    $.ajax({
+                        type: "GET",
+                        url: "/Calendar/GetEvents",
+                        dataType: 'json',
+                        data: { professionalId:  $("#ProfessionalUp").val()},
+                        success: function (data) {
+                            $.each(data, function (i, v)
+                            {
+                                events.push({
+                                    eventId: v.EventId,
+                                    CompanyId: v.CompanyId,
+                                    ProfessionalId: v.ProfessionalId,
+                                    Profesional: v.Profesional,
+                                    ClientId: v.ClientId,
+                                    Cliente: v.Cliente,
+                                    title: v.Subject,
+                                    description: v.Description,
+                                    start: moment(v.Start),
+                                    end: v.End != null ? moment(v.End) : null,
+                                    color: v.ThemeColor,
+                                    allDay: v.IsFullDay
+                                });
+                            })
+
+                            GenerateCalender(events);
+                        },
+                        error: function (error)
+                        {
+                            alert('failed');
+                        }
+                    })
+                }
+            });
+
+            function GenerateCalender(events)
+            {
+                $('#calender').fullCalendar('destroy');
+                $('#calender').fullCalendar(
+                    {
+                        contentHeight: 400,
+                        defaultDate: new Date(),
+                        timeFormat: 'h(:mm)a',
+                        header:
+                        {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,basicWeek,basicDay,agenda'
+                        },
+                        eventLimit: true,
+                        eventColor: '#378006',
+                        events: events,
+                        eventClick: function (calEvent, jsEvent, view)
+                        {
+                            selectedEvent = calEvent;
+                            $('#myModal #eventTitle').text(calEvent.title);
+                            var $description = $('<div/>');
+                            $description.append($('<p/>').html('<b>Profesional: </b>' + calEvent.Profesional));
+                            $description.append($('<p/>').html('<strong><b>Paciente: </b></strong>' + calEvent.Cliente));
+                            $description.append($('<p/>').html('<b>Start: </b>' + calEvent.start.format("MM-DD-YYYY HH:mm a")));
+                            if (calEvent.end != null)
+                            {
+                                $description.append($('<p/>').html('<b>End: </b>' + calEvent.end.format("MM-DD-YYYY HH:mm a")));
+                            }
+                            $description.append($('<p/>').html('<b>Description: </b>' + calEvent.description));
+                            $('#myModal #pDetails').empty().html($description);
+
+                            $('#myModal').modal();
+                        },
+                        selectable: true,
+                        select: function (start, end)
+                        {
+                                selectedEvent =
+                                {
+                                    EventId: 0,
+                                    CompanyId: 0,
+                                    ProfessionalId: 0,
+                                    Profesional:'',
+                                    ClientId: 0,
+                                    Cliente:'',
+                                    title: '',
+                                    description: '',
+                                    start: start,
+                                    end: end,
+                                    allDay: false,
+                                    color: ''
+                                };
+                            openAddEditForm();
+                            $('#calendar').fullCalendar('unselect');
+                        },
+                        editable: true,
+                        eventDrop: function (event)
+                        {
+                            var data =
+                            {
+                                EventId: event.EventId,
+                                CompanyId: event.CompanyId,
+                                ProfessionalId: event.ProfessionalId,   //agregado
+                                Profesional: event.Profesional,
+                                ClientId: event.ClientId,    //agregado
+                                Cliente: event.Cliente,
+                                Subject: event.title,
+                                Start: event.start.format('MM/DD/YYYY HH:mm A'),
+                                End: event.end != null ? event.end.format('MM/DD/YYYY HH:mm A') : null,
+                                Description: event.description,
+                                ThemeColor: event.color,
+                                IsFullDay: event.allDay
+                            };
+                            SaveEvent(data);
+                        }
+                    })
+            }
+
+            $('#btnEdit').click(function ()
+            {
+                //Open modal dialog for edit event
+                openAddEditForm();
+            })
+
+            $('#btnDelete').click(function ()
+            {
+                if (selectedEvent != null && confirm('Are you sure?'))
+                {
+                    $.ajax({
+                        type: "POST",
+                        url: '/Calendar/DeleteEvent',
+                        data: { 'eventId': selectedEvent.eventId },
+                        success: function (data)
+                        {
+                            if (data.status)
+                            {
+                                //Refresh the calender
+                                $('#myModal').modal('hide');
+                                FetchEventAndRenderCalendar();
+                            }
+                        },
+                        error: function ()
+                        {
+                            alert('Failed');
+                        }
+                    })
+                }
+            })
+
+            $('#dtp1,#dtp2').datetimepicker({
+                format: 'MM/DD/YYYY HH:mm A'
+            });
+
+            $('#chkIsFullDay').change(function ()
+            {
+                if ($(this).is(':checked'))
+                {
+                    $('#divEndDate').hide();
+                }
+                else
+                {
+                    $('#divEndDate').show();
+                }
+            });
+
+
+            function openAddEditForm()
+            {
+                if (selectedEvent != null)
+                {
+                    $('#hdEventID').val(selectedEvent.eventId);
+                    $('#CompanyId').val(selectedEvent.CompanyId);
+                    $('#ProfessionalId').val(selectedEvent.ProfessionalId);
+                    $('#Profesional').val(selectedEvent.Profesional);
+                    $('#ClientId').val(selectedEvent.ClientId);
+                    $('#Cliente').val(selectedEvent.Cliente);
+                    $('#txtSubject').val(selectedEvent.title);
+                    $('#txtStart').val(selectedEvent.start.format('MM/DD/YYYY HH:mm A'));
+                    $('#chkIsFullDay').prop("checked", selectedEvent.allDay || false);
+                    $('#chkIsFullDay').change();
+                    $('#txtEnd').val(selectedEvent.end != null ? selectedEvent.end.format('MM/DD/YYYY HH:mm A') : '');
+                    $('#txtDescription').val(selectedEvent.description);
+                    $('#ddThemeColor').val(selectedEvent.color);
+                }              
+                //$('#myModal').modal('hide');
+                $('#myModalSave').modal($('#ProfessionalId').focus());
+
+                //$('#myModal').remove();
+            }
+
+
+
+            $('#btnSave').click(function ()
+            {
+                $('#myModal').modal('hide'); //se hace un cierre del modal de Detalle que el Calendario se refresque completo.
+
+                //Validation/
+                if ($('#txtSubject').val().trim() == "")
+                {
+                    alert('Subject required');
+                    return;
+                }
+                if ($('#txtStart').val().trim() == "")
+                {
+                    alert('Start date required');
+                    return;
+                }
+                if ($('#chkIsFullDay').is(':checked') == false && $('#txtEnd').val().trim() == "")
+                {
+                    alert('End date required');
+                    return;
+                }
+                else
+                {
+                    var startDate = moment($('#txtStart').val(), "MM/DD/YYYY HH:mm A").toDate();
+                    var endDate = moment($('#txtEnd').val(), "MM/DD/YYYY HH:mm A").toDate();
+                    if (startDate > endDate)
+                    {
+                        alert('Invalid end date');
+                        return;
+                    }
+                }
+
+                var data =
+                {
+                    EventId: $('#hdEventID').val(),
+                    CompanyId: $('#CompanyId').val(),
+                    ProfessionalId: $('#ProfessionalId').val(),
+                    Profesional: $('#Profesional').val(),
+                    ClientId: $('#ClientId').val(),
+                    Cliente: $('#Cliente').val(),
+                    Subject: $('#txtSubject').val().trim(),
+                    Start: $('#txtStart').val().trim(),
+                    End: $('#chkIsFullDay').is(':checked') ? null : $('#txtEnd').val().trim(),
+                    Description: $('#txtDescription').val(),
+                    ThemeColor: $('#ddThemeColor').val(),
+                    IsFullDay: $('#chkIsFullDay').is(':checked')
+                }
+                SaveEvent(data);
+                // call function for submit data to the server
+            })
+
+            function SaveEvent(data)
+            {
+                $.ajax({
+                    type: "POST",
+                    url: '/Calendar/SaveEvent',
+                    data: data,
+                    success: function (data) {
+                        if (data.status) {
+                            //Refresh the calender
+                            $('#myModalSave').modal('hide');
+                            FetchEventAndRenderCalendar();
+                            CallProfesional();
+                        }
+                    },
+                    error: function () {
+                        alert('Failed');
+                    }
+                })
+            }
+
+            function CallProfesional()
+            {
+                $("#ProfessionalUp").empty();
+                $("#ProfessionalUp").append('<option value="0">[Seleccione Item...]</option>');
+                $.ajax
+                ({
+                    type: "POST",
+                    url: '/Calendar/CallProfesional',
+                    success: function (data) {
+                        $.each(data, function (i, data)
+                        {
+                            $("#ProfessionalUp").append('<option value="'
+                             + data.ProfessionalId + '">'
+                             + data.FullName + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Error de Lectura de Relacion' + ex);
+                    }
+                })
+            }
+        })
+    </script>
+}

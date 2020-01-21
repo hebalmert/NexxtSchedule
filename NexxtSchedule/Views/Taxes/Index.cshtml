@@ -1,0 +1,59 @@
+﻿@model IEnumerable<NexxtSchedule.Models.Tax>
+
+@{
+    ViewBag.Title = @Resources.Resource.Tax_IndexView_Titulo1;
+}
+
+    <h2>@Resources.Resource.Tax_IndexView_Titulo1</h2>
+
+<p>
+    <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
+            '@Url.Action("Create", "Taxes", new { })'">
+        <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
+    </button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Impuesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Impuesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rate)
+        </td>
+        <td>
+            <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+            '@Url.Action("Edit", "Taxes", new { id = item.TaxId})'">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+
+            <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+            '@Url.Action("Details", "Taxes", new { id = item.TaxId})'">
+                <span class="glyphicon glyphicon-list"></span>
+            </button>
+
+            <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+            '@Url.Action("Delete", "Taxes", new { id = item.TaxId})'">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </td>
+    </tr>
+}
+
+</table>

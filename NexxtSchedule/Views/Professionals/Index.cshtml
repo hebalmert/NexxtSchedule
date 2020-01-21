@@ -1,0 +1,86 @@
+﻿@model IEnumerable<NexxtSchedule.Models.Professional>
+
+@{
+    ViewBag.Title = @Resources.Resource.Profe_IndexView_Titulo1;
+}
+
+    <h2>@Resources.Resource.Profe_IndexView_Titulo1</h2>
+
+    <p>
+        <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
+            '@Url.Action("Create", "Professionals", new { })'">
+            <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
+        </button>
+    </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @if (!string.IsNullOrEmpty(item.Photo))
+        {
+            <img src="@Url.Content(item.Photo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+        }
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FullName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Movil)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Rate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Activo)
+    </td>
+    <td>
+        <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+            '@Url.Action("Edit", "Professionals", new { id = item.ProfessionalId})'">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+
+        <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+            '@Url.Action("Details", "Professionals", new { id = item.ProfessionalId})'">
+            <span class="glyphicon glyphicon-list"></span>
+        </button>
+
+        <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+            '@Url.Action("Delete", "Professionals", new { id = item.ProfessionalId})'">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+    </td>
+</tr>
+}
+
+</table>

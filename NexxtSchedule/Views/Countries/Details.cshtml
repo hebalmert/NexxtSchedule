@@ -1,0 +1,30 @@
+﻿@model NexxtSchedule.Models.Country
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDetail;
+}
+
+    <h2>@Resources.Resource.ViewDetail</h2>
+
+<div>
+    <h4>@Resources.Resource.Country_ViewIndex_Titulo1</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pais)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
+        <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
+    </button>
+    <button type="button" class="btn btn-info btn-sm" onclick="location.href ='@Url.Action("Edit", new { id = Model.CountryId})'">
+        <span class="glyphicon glyphicon-list"></span> @Resources.Resource.ButtonEdit
+    </button>
+</p>

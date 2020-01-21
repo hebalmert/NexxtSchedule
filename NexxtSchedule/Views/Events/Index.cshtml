@@ -1,0 +1,107 @@
+﻿@model IEnumerable<NexxtSchedule.Models.Event>
+
+@{
+    ViewBag.Title =  @Resources.Resource.Event_ViewIndex_Titulo1;
+}
+
+    <h2> @Resources.Resource.Event_ViewIndex_Titulo1</h2>
+
+    <p>
+        <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
+            '@Url.Action("Create", "Events", new { })'">
+            <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
+        </button>
+    </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.Cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Professional.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Profesional)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Start)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.End)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThemeColor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsFullDay)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.Cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Professional.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Profesional)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Start)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.End)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThemeColor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsFullDay)
+        </td>
+        <td>
+            <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+            '@Url.Action("Edit", "Events", new { id = item.EventId})'">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+
+            <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+            '@Url.Action("Details", "Events", new { id = item.EventId})'">
+                <span class="glyphicon glyphicon-list"></span>
+            </button>
+
+            <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+            '@Url.Action("Delete", "Events", new { id = item.EventId})'">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </td>
+    </tr>
+}
+
+</table>

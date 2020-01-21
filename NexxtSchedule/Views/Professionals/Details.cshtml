@@ -1,0 +1,113 @@
+﻿@model NexxtSchedule.Models.Professional
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDetail;
+}
+
+    <h2>@Resources.Resource.ViewDetail</h2>
+
+    <div>
+        <h4>@Resources.Resource.Profe_IndexView_Titulo1</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Photo)
+            </dt>
+
+            <dd>
+                @if (!string.IsNullOrEmpty(Model.Photo))
+                {
+                    <img src="@Url.Content(Model.Photo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+                }
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Identification.TipoDocumento)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Identification.TipoDocumento)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IdentificationNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IdentificationNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Movil)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Movil)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Rate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Rate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Activo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Activo)
+            </dd>
+
+        </dl>
+    </div>
+<p>
+    <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
+        <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
+    </button>
+    <button type="button" class="btn btn-info btn-sm" onclick="location.href ='@Url.Action("Edit", new { id = Model.ProfessionalId})'">
+        <span class="glyphicon glyphicon-list"></span> @Resources.Resource.ButtonEdit
+    </button>
+</p>
