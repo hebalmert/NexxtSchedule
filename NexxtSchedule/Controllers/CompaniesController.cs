@@ -82,6 +82,19 @@ namespace NexxtSchedule.Controllers
                         }
                     }
 
+                    // Se crea el Registro de Control de Consecutivos de la Compania
+                    var db2 = new NexxtCalContext();
+                    var registro = new Register
+                    {
+                        CompanyId = company.CompanyId,
+                        NotaCobro = 0,
+                        Egresos = 0
+                    };
+                    db2.Registers.Add(registro);
+                    db2.SaveChanges();
+                    db2.Dispose();
+                    //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
                     // Se crea el HeadText de Control de Consecutivos de la Compania
                     var db3 = new NexxtCalContext();
                     var headtext = new HeadText

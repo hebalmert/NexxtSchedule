@@ -32,5 +32,7 @@ namespace NexxtSchedule.Models
         public decimal Rate { get; set; }
 
         public virtual Company Company { get; set; }
+
+        public virtual ICollection<Service> Services { get; set; }
     }
 }

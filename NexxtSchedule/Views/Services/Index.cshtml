@@ -1,0 +1,83 @@
+﻿@model IEnumerable<NexxtSchedule.Models.Service>
+
+@{
+    ViewBag.Title = @Resources.Resource.Service_IndexView_Titulo1;
+}
+
+    <h2>@Resources.Resource.Service_IndexView_Titulo1</h2>
+
+    <p>
+        <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
+            '@Url.Action("Create", "Services", new { })'">
+            <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
+        </button>
+    </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceCategory.Categoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tax.Impuesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Servicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Detalle)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceCategory.Categoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tax.Impuesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Servicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Detalle)
+        </td>
+        <td>
+            <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+            '@Url.Action("Edit", "Services", new { id = item.ServiceId})'">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+
+            <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+            '@Url.Action("Details", "Services", new { id = item.ServiceId})'">
+                <span class="glyphicon glyphicon-list"></span>
+            </button>
+
+            <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+            '@Url.Action("Delete", "Services", new { id = item.ServiceId})'">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </td>
+    </tr>
+}
+
+</table>

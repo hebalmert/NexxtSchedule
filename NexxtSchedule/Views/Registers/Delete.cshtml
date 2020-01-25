@@ -1,29 +1,35 @@
-﻿@model NexxtSchedule.Models.Identification
+﻿@model NexxtSchedule.Models.Register
 
 @{
-    ViewBag.Title = ViewBag.Title = @Resources.Resource.ViewDelete;
+    ViewBag.Title = @Resources.Resource.ViewDelete;
 }
 
-    <h2>ViewBag.Title = @Resources.Resource.ViewDelete</h2>
+    <h2>@Resources.Resource.ViewDelete</h2>
 
-    <h3>ViewBag.Title = @Resources.Resource.ViewDelete</h3>
+    <h3>@Resources.Resource.ViewDelete</h3>
 <div>
-    <h4>@Resources.Resource.Identification_IndexView_Titulo1</h4>
+    <h4>@Resources.Resource.Register_ViewIndex_Titulo1</h4>
     <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TipoDocumento)
+            @Html.DisplayNameFor(model => model.NotaCobro)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TipoDocumento)
+            @Html.DisplayFor(model => model.NotaCobro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Egresos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Egresos)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm())
-    {
+    @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

@@ -34,5 +34,11 @@ namespace NexxtSchedule.Models
         public System.Data.Entity.DbSet<NexxtSchedule.Models.Client> Clients { get; set; }
 
         public System.Data.Entity.DbSet<NexxtSchedule.Models.Event> Events { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSchedule.Models.ServiceCategory> ServiceCategories { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSchedule.Models.Service> Services { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSchedule.Models.Register> Registers { get; set; }
     }
 }

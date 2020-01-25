@@ -87,5 +87,11 @@ namespace NexxtSchedule.Models
         public virtual ICollection<Event> Events { get; set; }
 
         public virtual ICollection<ModelCalendar> ModelCalendars { get; set; }
+
+        public virtual ICollection<ServiceCategory> ServiceCategories { get; set; }
+
+        public virtual ICollection<Service> Services { get; set; }
+
+        public virtual ICollection<Register> Registers { get; set; }
     }
 }

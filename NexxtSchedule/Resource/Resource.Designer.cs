@@ -664,6 +664,150 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nota Cobro.
+        /// </summary>
+        public static string Register_Model_BillingNote {
+            get {
+                return ResourceManager.GetString("Register_Model_BillingNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Egresos.
+        /// </summary>
+        public static string Register_Model_Expenses {
+            get {
+                return ResourceManager.GetString("Register_Model_Expenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Consecutivo.
+        /// </summary>
+        public static string Register_ViewIndex_Titulo1 {
+            get {
+                return ResourceManager.GetString("Register_ViewIndex_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Servicios.
+        /// </summary>
+        public static string Service_IndexView_Titulo1 {
+            get {
+                return ResourceManager.GetString("Service_IndexView_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categoria.
+        /// </summary>
+        public static string Service_Model_Categoria {
+            get {
+                return ResourceManager.GetString("Service_Model_Categoria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compañia.
+        /// </summary>
+        public static string Service_Model_Compania {
+            get {
+                return ResourceManager.GetString("Service_Model_Compania", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detalle.
+        /// </summary>
+        public static string Service_Model_Detalle {
+            get {
+                return ResourceManager.GetString("Service_Model_Detalle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Impuesto.
+        /// </summary>
+        public static string Service_Model_Impuesto {
+            get {
+                return ResourceManager.GetString("Service_Model_Impuesto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Precio 1.
+        /// </summary>
+        public static string Service_Model_Precio1 {
+            get {
+                return ResourceManager.GetString("Service_Model_Precio1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Precio 2.
+        /// </summary>
+        public static string Service_Model_Precio2 {
+            get {
+                return ResourceManager.GetString("Service_Model_Precio2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Precio 3.
+        /// </summary>
+        public static string Service_Model_Precio3 {
+            get {
+                return ResourceManager.GetString("Service_Model_Precio3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Servicio.
+        /// </summary>
+        public static string Service_Model_Servicio {
+            get {
+                return ResourceManager.GetString("Service_Model_Servicio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categoria.
+        /// </summary>
+        public static string ServiceCategory_Model_Categoria {
+            get {
+                return ResourceManager.GetString("ServiceCategory_Model_Categoria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compañia.
+        /// </summary>
+        public static string ServiceCategory_Model_Company {
+            get {
+                return ResourceManager.GetString("ServiceCategory_Model_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categoria Servicio.
+        /// </summary>
+        public static string ServiceCategory_ViewIndex_Titulo1 {
+            get {
+                return ResourceManager.GetString("ServiceCategory_ViewIndex_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detalle.
+        /// </summary>
+        public static string ServiceCateogory_Model_Detail {
+            get {
+                return ResourceManager.GetString("ServiceCateogory_Model_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Impuesto.
         /// </summary>
         public static string Tax_IndexView_Titulo1 {

@@ -195,6 +195,9 @@
     <Compile Include="Controllers\IdentificationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfessionalsController.cs" />
+    <Compile Include="Controllers\RegistersController.cs" />
+    <Compile Include="Controllers\ServiceCategoriesController.cs" />
+    <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\TaxesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -213,6 +216,9 @@
     <Compile Include="Models\ModelCalendar.cs" />
     <Compile Include="Models\NexxtCalContext.cs" />
     <Compile Include="Models\Professional.cs" />
+    <Compile Include="Models\Register.cs" />
+    <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\ServiceCategory.cs" />
     <Compile Include="Models\Tax.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -411,6 +417,21 @@
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Calendar\Index.cshtml" />
+    <Content Include="Views\ServiceCategories\Create.cshtml" />
+    <Content Include="Views\ServiceCategories\Delete.cshtml" />
+    <Content Include="Views\ServiceCategories\Details.cshtml" />
+    <Content Include="Views\ServiceCategories\Edit.cshtml" />
+    <Content Include="Views\ServiceCategories\Index.cshtml" />
+    <Content Include="Views\Services\Create.cshtml" />
+    <Content Include="Views\Services\Delete.cshtml" />
+    <Content Include="Views\Services\Details.cshtml" />
+    <Content Include="Views\Services\Edit.cshtml" />
+    <Content Include="Views\Services\Index.cshtml" />
+    <Content Include="Views\Registers\Create.cshtml" />
+    <Content Include="Views\Registers\Delete.cshtml" />
+    <Content Include="Views\Registers\Details.cshtml" />
+    <Content Include="Views\Registers\Edit.cshtml" />
+    <Content Include="Views\Registers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

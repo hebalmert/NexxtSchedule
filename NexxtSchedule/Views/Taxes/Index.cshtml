@@ -7,16 +7,13 @@
     <h2>@Resources.Resource.Tax_IndexView_Titulo1</h2>
 
 <p>
-    <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
+    @*<button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
             '@Url.Action("Create", "Taxes", new { })'">
         <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
-    </button>
+    </button>*@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Company.Name)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Impuesto)
         </th>
@@ -28,9 +25,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Company.Name)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Impuesto)
         </td>
@@ -48,10 +42,10 @@
                 <span class="glyphicon glyphicon-list"></span>
             </button>
 
-            <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+            @*<button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
             '@Url.Action("Delete", "Taxes", new { id = item.TaxId})'">
                 <span class="glyphicon glyphicon-trash"></span>
-            </button>
+            </button>*@
         </td>
     </tr>
 }

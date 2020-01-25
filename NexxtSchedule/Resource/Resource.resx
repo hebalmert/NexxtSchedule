@@ -318,6 +318,54 @@
   <data name="Profe_Model_UserName" xml:space="preserve">
     <value>Correo</value>
   </data>
+  <data name="Register_Model_BillingNote" xml:space="preserve">
+    <value>Nota Cobro</value>
+  </data>
+  <data name="Register_Model_Expenses" xml:space="preserve">
+    <value>Egresos</value>
+  </data>
+  <data name="Register_ViewIndex_Titulo1" xml:space="preserve">
+    <value>Consecutivo</value>
+  </data>
+  <data name="ServiceCategory_Model_Categoria" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="ServiceCategory_Model_Company" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="ServiceCategory_ViewIndex_Titulo1" xml:space="preserve">
+    <value>Categoria Servicio</value>
+  </data>
+  <data name="ServiceCateogory_Model_Detail" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="Service_IndexView_Titulo1" xml:space="preserve">
+    <value>Servicios</value>
+  </data>
+  <data name="Service_Model_Categoria" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="Service_Model_Compania" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="Service_Model_Detalle" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="Service_Model_Impuesto" xml:space="preserve">
+    <value>Impuesto</value>
+  </data>
+  <data name="Service_Model_Precio1" xml:space="preserve">
+    <value>Precio 1</value>
+  </data>
+  <data name="Service_Model_Precio2" xml:space="preserve">
+    <value>Precio 2</value>
+  </data>
+  <data name="Service_Model_Precio3" xml:space="preserve">
+    <value>Precio 3</value>
+  </data>
+  <data name="Service_Model_Servicio" xml:space="preserve">
+    <value>Servicio</value>
+  </data>
   <data name="Tax_IndexView_Titulo1" xml:space="preserve">
     <value>Impuesto</value>
   </data>

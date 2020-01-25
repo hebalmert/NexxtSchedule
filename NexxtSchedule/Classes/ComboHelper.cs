@@ -70,6 +70,42 @@ namespace NexxtSchedule.Classes
             return profesional.OrderBy(d => d.FullName).ToList();
         }
 
+        //Combos de categoria Servicios
+        public static List<ServiceCategory> GetServicecategories(int companyid)
+        {
+            var categoryserivces = db.ServiceCategories.Where(c => c.CompanyId == companyid).ToList();
+            categoryserivces.Add(new ServiceCategory
+            {
+                ServiceCategoryId = 0,
+                Categoria = @Resources.Resource.ComboSelect,
+            });
+            return categoryserivces.OrderBy(d => d.Categoria).ToList();
+        }
+
+        //Combos de categoria Servicios
+        public static List<Service> GetServices(int companyid)
+        {
+            var services = db.Services.Where(c => c.CompanyId == companyid).ToList();
+            services.Add(new Service
+            {
+                ServiceId = 0,
+                Servicio = @Resources.Resource.ComboSelect,
+            });
+            return services.OrderBy(d => d.Servicio).ToList();
+        }
+
+        //Combos de impuestos
+        public static List<Tax> GetTaxes(int companyid)
+        {
+            var taxes = db.Taxes.Where(c => c.CompanyId == companyid).ToList();
+            taxes.Add(new Tax
+            {
+                TaxId = 0,
+                Impuesto = @Resources.Resource.ComboSelect,
+            });
+            return taxes.OrderBy(d => d.Impuesto).ToList();
+        }
+
         public void Dispose()
         {
             db.Dispose();

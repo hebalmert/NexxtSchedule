@@ -6,18 +6,16 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using NexxtSchedule.Classes;
 using NexxtSchedule.Models;
 
 namespace NexxtSchedule.Controllers
 {
-    [Authorize(Roles = "User, Profe")]
-
-    public class ClientsController : Controller
+    [Authorize(Roles = "User")]
+    public class ServiceCategoriesController : Controller
     {
         private NexxtCalContext db = new NexxtCalContext();
 
-        // GET: Clients
+        // GET: ServiceCategories
         public ActionResult Index()
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
@@ -26,52 +24,50 @@ namespace NexxtSchedule.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            var clients = db.Clients.Where(c => c.CompanyId == user.CompanyId)
-                 .Include(c => c.Identification);
+            var serviceCategories = db.ServiceCategories.Where(c => c.CompanyId == user.CompanyId);
 
-            return View(clients.OrderBy(o => o.Cliente).ToList());
+            return View(serviceCategories.OrderBy(o=> o.Categoria).ToList());
         }
 
-        // GET: Clients/Details/5
+        // GET: ServiceCategories/Details/5
         public ActionResult Details(int? id)
-        {
+        {          
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            var serviceCategory = db.ServiceCategories.Find(id);
+            if (serviceCategory == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(serviceCategory);
         }
 
-        // GET: Clients/Create
+        // GET: ServiceCategories/Create
         public ActionResult Create()
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+
             if (user == null)
             {
                 return RedirectToAction("Index", "Home");
             }
-            var client = new Client { CompanyId = user.CompanyId };
+            var servicecategory = new ServiceCategory { CompanyId = user.CompanyId };
 
-            ViewBag.IdentificationId = new SelectList(ComboHelper.GetIdentifications(user.CompanyId), "IdentificationId", "TipoDocumento", (0));
-
-            return View(client);
+            return View(servicecategory);
         }
 
-        // POST: Clients/Create
+        // POST: ServiceCategories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Client client)
+        public ActionResult Create(ServiceCategory serviceCategory)
         {
             if (ModelState.IsValid)
             {
-                db.Clients.Add(client);
+                db.ServiceCategories.Add(serviceCategory);
                 try
                 {
                     db.SaveChanges();
@@ -92,37 +88,35 @@ namespace NexxtSchedule.Controllers
                 }
             }
 
-            ViewBag.IdentificationId = new SelectList(ComboHelper.GetIdentifications(client.CompanyId), "IdentificationId", "TipoDocumento", client.IdentificationId);
-            return View(client);
+            return View(serviceCategory);
         }
 
-        // GET: Clients/Edit/5
+        // GET: ServiceCategories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var client = db.Clients.Find(id);
-            if (client == null)
+            var serviceCategory = db.ServiceCategories.Find(id);
+            if (serviceCategory == null)
             {
                 return HttpNotFound();
             }
 
-            ViewBag.IdentificationId = new SelectList(ComboHelper.GetIdentifications(client.CompanyId), "IdentificationId", "TipoDocumento", client.IdentificationId);
-            return View(client);
+            return View(serviceCategory);
         }
 
-        // POST: Clients/Edit/5
+        // POST: ServiceCategories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Client client)
+        public ActionResult Edit(ServiceCategory serviceCategory)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(client).State = EntityState.Modified;
+                db.Entry(serviceCategory).State = EntityState.Modified;
                 try
                 {
                     db.SaveChanges();
@@ -134,7 +128,7 @@ namespace NexxtSchedule.Controllers
                         ex.InnerException.InnerException != null &&
                         ex.InnerException.InnerException.Message.Contains("_Index"))
                     {
-                        ModelState.AddModelError(string.Empty, (@Resources.Resource.Msg_DoubleData));
+                        ModelState.AddModelError(string.Empty, @Resources.Resource.Msg_DoubleData);
                     }
                     else
                     {
@@ -143,32 +137,31 @@ namespace NexxtSchedule.Controllers
                 }
             }
 
-            ViewBag.IdentificationId = new SelectList(ComboHelper.GetIdentifications(client.CompanyId), "IdentificationId", "TipoDocumento", client.IdentificationId);
-            return View(client);
+            return View(serviceCategory);
         }
 
-        // GET: Clients/Delete/5
+        // GET: ServiceCategories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
-            if (client == null)
+            var serviceCategory = db.ServiceCategories.Find(id);
+            if (serviceCategory == null)
             {
                 return HttpNotFound();
             }
-            return View(client);
+            return View(serviceCategory);
         }
 
-        // POST: Clients/Delete/5
+        // POST: ServiceCategories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Client client = db.Clients.Find(id);
-            db.Clients.Remove(client);
+            ServiceCategory serviceCategory = db.ServiceCategories.Find(id);
+            db.ServiceCategories.Remove(serviceCategory);
             try
             {
                 db.SaveChanges();
@@ -187,7 +180,7 @@ namespace NexxtSchedule.Controllers
                     ModelState.AddModelError(string.Empty, ex.Message);
                 }
             }
-            return View(client);
+            return View(serviceCategory);
         }
 
         protected override void Dispose(bool disposing)
