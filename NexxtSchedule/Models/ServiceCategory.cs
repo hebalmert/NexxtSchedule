@@ -33,5 +33,7 @@ namespace NexxtSchedule.Models
         public virtual Company Company { get; set; }
 
         public virtual ICollection<Service> Services { get; set; }
+
+        public virtual ICollection<DirectPayment> DirectPayments { get; set; }
     }
 }

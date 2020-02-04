@@ -135,6 +135,9 @@
   <data name="ButtonSave" xml:space="preserve">
     <value>Guardar</value>
   </data>
+  <data name="ButtonSearch" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
   <data name="Client_IndeView_titulo1" xml:space="preserve">
     <value>Clientes</value>
   </data>
@@ -207,6 +210,99 @@
   <data name="Country_ViewIndex_Titulo1" xml:space="preserve">
     <value>Pais</value>
   </data>
+  <data name="DirectGeneral_Model_Cantidad" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
+  <data name="DirectGeneral_Model_Cliente" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="DirectGeneral_Model_Company" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="DirectGeneral_Model_ComprobantePago" xml:space="preserve">
+    <value>Numero Pago</value>
+  </data>
+  <data name="DirectGeneral_Model_Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="DIrectGeneral_Model_DirectPayment" xml:space="preserve">
+    <value>Pago Directo</value>
+  </data>
+  <data name="DirectGeneral_Model_Facturado" xml:space="preserve">
+    <value>Facturado</value>
+  </data>
+  <data name="DirectGeneral_Model_FechaFacturado" xml:space="preserve">
+    <value>Date Facturado</value>
+  </data>
+  <data name="DirectGeneral_Model_NotaCobro" xml:space="preserve">
+    <value>Nota Cobro</value>
+  </data>
+  <data name="DirectGeneral_Model_Precio" xml:space="preserve">
+    <value>Precio</value>
+  </data>
+  <data name="DirectGeneral_Model_ProcentajeProfesional" xml:space="preserve">
+    <value>Porcentaje</value>
+  </data>
+  <data name="DirectGeneral_Model_Profesional" xml:space="preserve">
+    <value>Profesional</value>
+  </data>
+  <data name="DirectGeneral_Model_Servicio" xml:space="preserve">
+    <value>Servicio</value>
+  </data>
+  <data name="DirectGeneral_Model_TasaProfesional" xml:space="preserve">
+    <value>Tasa Profesional</value>
+  </data>
+  <data name="DirectGeneral_Model_Tax" xml:space="preserve">
+    <value>Impuesto</value>
+  </data>
+  <data name="DirectGeneral_Model_Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="DirectGeneral_ViewIndex_Titulo1" xml:space="preserve">
+    <value>Pagos Pendientes</value>
+  </data>
+  <data name="DirectPayment_IndexView_Titulo1" xml:space="preserve">
+    <value>Cobro Directo</value>
+  </data>
+  <data name="DirectPayment_Model_Cantidad" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
+  <data name="DirectPayment_Model_Categoria" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="DirectPayment_Model_Cliente" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="DirectPayment_Model_Company" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="DirectPayment_Model_Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="DirectPayment_Model_LevelPrice" xml:space="preserve">
+    <value>Nivel Precio</value>
+  </data>
+  <data name="DirectPayment_Model_NotaCobro" xml:space="preserve">
+    <value>Nota Cobro</value>
+  </data>
+  <data name="DirectPayment_Model_Precio" xml:space="preserve">
+    <value>Precio</value>
+  </data>
+  <data name="DirectPayment_Model_Profesional" xml:space="preserve">
+    <value>Profesional</value>
+  </data>
+  <data name="DirectPayment_Model_Rate" xml:space="preserve">
+    <value>Impuesto</value>
+  </data>
+  <data name="DirectPayment_Model_Servicio" xml:space="preserve">
+    <value>Servicio</value>
+  </data>
+  <data name="DirectPayment_Model_TasaProfesional" xml:space="preserve">
+    <value>Tasa Profesional</value>
+  </data>
+  <data name="DirectPayment_Model_Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
   <data name="Event_Model_Cliente" xml:space="preserve">
     <value>Cliente</value>
   </data>
@@ -254,6 +350,12 @@
   </data>
   <data name="Identification_Model_TipoDocumento" xml:space="preserve">
     <value>Tipo Codumento</value>
+  </data>
+  <data name="LevelPrice_Model_PriceLevel" xml:space="preserve">
+    <value>Nivel Precio</value>
+  </data>
+  <data name="LevelPrice_ViewIndex_Titulo1" xml:space="preserve">
+    <value>Nivel Precio</value>
   </data>
   <data name="MsgDelete" xml:space="preserve">
     <value>Desea Eliminar este Registro?</value>

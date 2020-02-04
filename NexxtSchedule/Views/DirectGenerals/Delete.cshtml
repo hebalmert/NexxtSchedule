@@ -1,0 +1,156 @@
+﻿@model NexxtSchedule.Models.DirectGeneral
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDelete;
+}
+
+    <h2>@Resources.Resource.ViewDelete</h2>
+
+    <h3>@Resources.Resource.MsgDelete</h3>
+<div>
+    <h4>@Resources.Resource.DirectPayment_IndexView_Titulo1</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.Cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.Cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DirectPayment.NotaCobro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DirectPayment.NotaCobro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Professional.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Professional.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NotaCobro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NotaCobro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TasaProfesional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TasaProfesional)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServicioNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServicioNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tasa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tasa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PagoProfesional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PagoProfesional)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Facturado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Facturado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FacturadoDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FacturadoDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComprobantePago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComprobantePago)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
+        <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
+    </button>
+    <button type="submit" class="btn btn-danger btn-sm">
+        <span class="glyphicon glyphicon-trash"></span> @Resources.Resource.ButtonDelete
+    </button>
+</div>
+    }
+</div>

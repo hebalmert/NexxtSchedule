@@ -63,5 +63,7 @@ namespace NexxtSchedule.Models
         public virtual ServiceCategory ServiceCategory { get; set; }
 
         public virtual Tax Tax { get; set; }
+
+        public virtual ICollection<DirectPayment> DirectPayments { get; set; }
     }
 }

@@ -106,6 +106,18 @@ namespace NexxtSchedule.Classes
             return taxes.OrderBy(d => d.Impuesto).ToList();
         }
 
+        //Combos de impuestos
+        public static List<LevelPrice> GetLevelPrice()
+        {
+            var levelprice = db.LevelPrices.ToList();
+            levelprice.Add(new LevelPrice
+            {
+                LevelPriceId = 0,
+                NivelPrecio = @Resources.Resource.ComboSelect,
+            });
+            return levelprice.OrderBy(d => d.NivelPrecio).ToList();
+        }
+
         public void Dispose()
         {
             db.Dispose();

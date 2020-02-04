@@ -189,10 +189,13 @@
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
+    <Compile Include="Controllers\DirectGeneralsController.cs" />
+    <Compile Include="Controllers\DirectPaymentsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HeadTextsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IdentificationsController.cs" />
+    <Compile Include="Controllers\LevelPricesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfessionalsController.cs" />
     <Compile Include="Controllers\RegistersController.cs" />
@@ -208,10 +211,13 @@
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\DirectGeneral.cs" />
+    <Compile Include="Models\DirectPayment.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\HeadText.cs" />
     <Compile Include="Models\Identification.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LevelPrice.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ModelCalendar.cs" />
     <Compile Include="Models\NexxtCalContext.cs" />
@@ -432,6 +438,21 @@
     <Content Include="Views\Registers\Details.cshtml" />
     <Content Include="Views\Registers\Edit.cshtml" />
     <Content Include="Views\Registers\Index.cshtml" />
+    <Content Include="Views\LevelPrices\Create.cshtml" />
+    <Content Include="Views\LevelPrices\Delete.cshtml" />
+    <Content Include="Views\LevelPrices\Details.cshtml" />
+    <Content Include="Views\LevelPrices\Edit.cshtml" />
+    <Content Include="Views\LevelPrices\Index.cshtml" />
+    <Content Include="Views\DirectPayments\Create.cshtml" />
+    <Content Include="Views\DirectPayments\Delete.cshtml" />
+    <Content Include="Views\DirectPayments\Details.cshtml" />
+    <Content Include="Views\DirectPayments\Edit.cshtml" />
+    <Content Include="Views\DirectPayments\Index.cshtml" />
+    <Content Include="Views\DirectGenerals\Create.cshtml" />
+    <Content Include="Views\DirectGenerals\Delete.cshtml" />
+    <Content Include="Views\DirectGenerals\Details.cshtml" />
+    <Content Include="Views\DirectGenerals\Edit.cshtml" />
+    <Content Include="Views\DirectGenerals\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

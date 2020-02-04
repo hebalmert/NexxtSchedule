@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,16 +13,16 @@ namespace NexxtSchedule.Models
         [Key]
         public int IdentificationId { get; set; }
 
-        [Required(ErrorMessage = "El Campo {0} es Requerido")]
-        [Range(1, double.MaxValue, ErrorMessage = "Debe Seleccionar un {0}")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
+        [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
         [Index("Identification_TipoDocumento_Company_Index", 1, IsUnique = true)]
-        [Display(Name = "Compañia")]
+        [Display(ResourceType = typeof(Resource), Name = "Identification_Model_Company")]
         public int CompanyId { get; set; }
 
-        [Required(ErrorMessage = "El Campo {0} es Requerido")]
-        [MaxLength(50, ErrorMessage = " El Campo {0} debe ser menor de {1} Caracteres")]
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
+        [MaxLength(50, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
         [Index("Identification_TipoDocumento_Company_Index", 2, IsUnique = true)]
-        [Display(Name = "Tipo Documento")]
+        [Display(ResourceType = typeof(Resource), Name = "Identification_Model_TipoDocumento")]
         public string TipoDocumento { get; set; }
 
         public virtual Company Company { get; set; }

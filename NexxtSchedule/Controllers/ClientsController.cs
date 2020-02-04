@@ -39,7 +39,7 @@ namespace NexxtSchedule.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
+            var client = db.Clients.Find(id);
             if (client == null)
             {
                 return HttpNotFound();

@@ -94,5 +94,9 @@ namespace NexxtSchedule.Models
         public virtual ICollection<Event> Events { get; set; }
 
         public virtual ICollection<ModelCalendar> ModelCalendars { get; set; }
+
+        public virtual ICollection<DirectPayment> DirectPayments { get; set; }
+
+        public virtual ICollection<DirectGeneral> DirectGenerals { get; set; }
     }
 }

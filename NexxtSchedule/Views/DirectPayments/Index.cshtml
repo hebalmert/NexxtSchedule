@@ -1,0 +1,101 @@
+﻿@model IEnumerable<NexxtSchedule.Models.DirectPayment>
+
+@{
+    ViewBag.Title = @Resources.Resource.DirectPayment_IndexView_Titulo1;
+}
+
+    <h2>@Resources.Resource.DirectPayment_IndexView_Titulo1</h2>
+
+    <p>
+        <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
+            '@Url.Action("Create", "DirectPayments", new { })'">
+            <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
+        </button>
+    </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NotaCobro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.Cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Professional.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TasaProfesional)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServicioNombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tasa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.NotaCobro)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Client.Cliente)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Professional.FullName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TasaProfesional)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ServicioNombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tasa)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Precio)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cantidad)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Total)
+    </td>
+    <td>
+        @*<button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+            '@Url.Action("Edit", "DirectPayments", new { id = item.DirectPaymentId})'">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </button>*@
+
+        <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+            '@Url.Action("Details", "DirectPayments", new { id = item.DirectPaymentId})'">
+            <span class="glyphicon glyphicon-list"></span>
+        </button>
+
+        <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+            '@Url.Action("Delete", "DirectPayments", new { id = item.DirectPaymentId})'">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+    </td>
+</tr>
+}
+
+</table>

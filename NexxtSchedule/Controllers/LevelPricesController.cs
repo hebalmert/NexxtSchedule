@@ -6,74 +6,53 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using NexxtSchedule.Classes;
 using NexxtSchedule.Models;
 
 namespace NexxtSchedule.Controllers
 {
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "Admin")]
 
-    public class ServicesController : Controller
+    public class LevelPricesController : Controller
     {
         private NexxtCalContext db = new NexxtCalContext();
 
-        // GET: Services
+        // GET: LevelPrices
         public ActionResult Index()
         {
-            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
-            if (user == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
-            var services = db.Services.Where(c => c.CompanyId == user.CompanyId)
-                .Include(s => s.ServiceCategory)
-                .Include(s => s.Tax);
-            return View(services.ToList());
+            return View(db.LevelPrices.ToList());
         }
 
-        // GET: Services/Details/5
+        // GET: LevelPrices/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var service = db.Services.Find(id);
-            if (service == null)
+            var levelPrice = db.LevelPrices.Find(id);
+            if (levelPrice == null)
             {
                 return HttpNotFound();
             }
-            return View(service);
+            return View(levelPrice);
         }
 
-        // GET: Services/Create
+        // GET: LevelPrices/Create
         public ActionResult Create()
         {
-            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
-
-            if (user == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            var service = new Service { CompanyId = user.CompanyId };
-
-            ViewBag.ServiceCategoryId = new SelectList(ComboHelper.GetServicecategories(user.CompanyId), "ServiceCategoryId", "Categoria");
-            ViewBag.TaxId = new SelectList(ComboHelper.GetTaxes(user.CompanyId), "TaxId", "Impuesto");
-
-            return View(service);
+            return View();
         }
 
-        // POST: Services/Create
+        // POST: LevelPrices/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Service service)
+        public ActionResult Create(LevelPrice levelPrice)
         {
             if (ModelState.IsValid)
             {
-                db.Services.Add(service);
+                db.LevelPrices.Add(levelPrice);
                 try
                 {
                     db.SaveChanges();
@@ -94,39 +73,34 @@ namespace NexxtSchedule.Controllers
                 }
             }
 
-            ViewBag.ServiceCategoryId = new SelectList(ComboHelper.GetServicecategories(service.CompanyId), "ServiceCategoryId", "Categoria", service.ServiceCategoryId);
-            ViewBag.TaxId = new SelectList(ComboHelper.GetTaxes(service.CompanyId), "TaxId", "Impuesto", service.TaxId);
-            return View(service);
+            return View(levelPrice);
         }
 
-        // GET: Services/Edit/5
+        // GET: LevelPrices/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var service = db.Services.Find(id);
-            if (service == null)
+            var levelPrice = db.LevelPrices.Find(id);
+            if (levelPrice == null)
             {
                 return HttpNotFound();
             }
-
-            ViewBag.ServiceCategoryId = new SelectList(ComboHelper.GetServicecategories(service.CompanyId), "ServiceCategoryId", "Categoria", service.ServiceCategoryId);
-            ViewBag.TaxId = new SelectList(ComboHelper.GetTaxes(service.CompanyId), "TaxId", "Impuesto", service.TaxId);
-            return View(service);
+            return View(levelPrice);
         }
 
-        // POST: Services/Edit/5
+        // POST: LevelPrices/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Service service)
+        public ActionResult Edit(LevelPrice levelPrice)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(service).State = EntityState.Modified;
+                db.Entry(levelPrice).State = EntityState.Modified;
                 try
                 {
                     db.SaveChanges();
@@ -146,34 +120,31 @@ namespace NexxtSchedule.Controllers
                     }
                 }
             }
-
-            ViewBag.ServiceCategoryId = new SelectList(ComboHelper.GetServicecategories(service.CompanyId), "ServiceCategoryId", "Categoria", service.ServiceCategoryId);
-            ViewBag.TaxId = new SelectList(ComboHelper.GetTaxes(service.CompanyId), "TaxId", "Impuesto", service.TaxId);
-            return View(service);
+            return View(levelPrice);
         }
 
-        // GET: Services/Delete/5
+        // GET: LevelPrices/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Service service = db.Services.Find(id);
-            if (service == null)
+            LevelPrice levelPrice = db.LevelPrices.Find(id);
+            if (levelPrice == null)
             {
                 return HttpNotFound();
             }
-            return View(service);
+            return View(levelPrice);
         }
 
-        // POST: Services/Delete/5
+        // POST: LevelPrices/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Service service = db.Services.Find(id);
-            db.Services.Remove(service);
+            LevelPrice levelPrice = db.LevelPrices.Find(id);
+            db.LevelPrices.Remove(levelPrice);
             try
             {
                 db.SaveChanges();
@@ -192,7 +163,7 @@ namespace NexxtSchedule.Controllers
                     ModelState.AddModelError(string.Empty, ex.Message);
                 }
             }
-            return View(service);
+            return View(levelPrice);
         }
 
         protected override void Dispose(bool disposing)

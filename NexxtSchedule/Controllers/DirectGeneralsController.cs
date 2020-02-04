@@ -11,14 +11,12 @@ using NexxtSchedule.Models;
 
 namespace NexxtSchedule.Controllers
 {
-    [Authorize(Roles = "User")]
-
-    public class ServicesController : Controller
+    public class DirectGeneralsController : Controller
     {
         private NexxtCalContext db = new NexxtCalContext();
 
-        // GET: Services
-        public ActionResult Index()
+        // GET: DirectGenerals
+        public ActionResult Index(int? ProfessionalId)
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
@@ -26,54 +24,73 @@ namespace NexxtSchedule.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            var services = db.Services.Where(c => c.CompanyId == user.CompanyId)
-                .Include(s => s.ServiceCategory)
-                .Include(s => s.Tax);
-            return View(services.ToList());
+            if (ProfessionalId != 0 || ProfessionalId != null)
+            {
+                var directGenerals = db.DirectGenerals.Where(c => c.CompanyId == user.CompanyId && c.Facturado == false && c.ProfessionalId == ProfessionalId)
+                    .Include(d => d.Client)
+                    .Include(d => d.DirectPayment)
+                    .Include(d => d.Professional);
+                ViewBag.ProfessionalId = new SelectList(ComboHelper.GetProfessional(user.CompanyId), "ProfessionalId", "FullName", (0));
+                return View(directGenerals.OrderByDescending(t => t.Date).ToList());
+            }
+            else
+            {
+                var directGenerals = db.DirectGenerals.Where(c => c.CompanyId == user.CompanyId && c.Facturado == false && c.Client.Cliente == "rt445fff45345")
+                    .Include(d => d.Client)
+                    .Include(d => d.DirectPayment)
+                    .Include(d => d.Professional);
+                ViewBag.ProfessionalId = new SelectList(ComboHelper.GetProfessional(user.CompanyId), "ProfessionalId", "FullName", (0));
+                return View(directGenerals.OrderBy(t => t.Date).ToList());
+            }
         }
 
-        // GET: Services/Details/5
+        // GET: DirectGenerals/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var service = db.Services.Find(id);
-            if (service == null)
+            var directGeneral = db.DirectGenerals.Find(id);
+            if (directGeneral == null)
             {
                 return HttpNotFound();
             }
-            return View(service);
+            return View(directGeneral);
         }
 
-        // GET: Services/Create
+        // GET: DirectGenerals/Create
         public ActionResult Create()
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
-
             if (user == null)
             {
                 return RedirectToAction("Index", "Home");
             }
-            var service = new Service { CompanyId = user.CompanyId };
 
-            ViewBag.ServiceCategoryId = new SelectList(ComboHelper.GetServicecategories(user.CompanyId), "ServiceCategoryId", "Categoria");
-            ViewBag.TaxId = new SelectList(ComboHelper.GetTaxes(user.CompanyId), "TaxId", "Impuesto");
+            //var paydirect = new DirectPayment
+            //{
+            //    CompanyId = user.CompanyId,
+            //    Date = DateTime.Today
+            //};
 
-            return View(service);
+            ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "Cliente");
+            ViewBag.DirectPaymentId = new SelectList(db.DirectPayments, "DirectPaymentId", "NotaCobro");
+            ViewBag.ProfessionalId = new SelectList(db.Professionals, "ProfessionalId", "FirstName");
+
+            return View();
         }
 
-        // POST: Services/Create
+        // POST: DirectGenerals/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Service service)
+        public ActionResult Create(DirectGeneral directGeneral)
         {
             if (ModelState.IsValid)
             {
-                db.Services.Add(service);
+                db.DirectGenerals.Add(directGeneral);
                 try
                 {
                     db.SaveChanges();
@@ -94,39 +111,42 @@ namespace NexxtSchedule.Controllers
                 }
             }
 
-            ViewBag.ServiceCategoryId = new SelectList(ComboHelper.GetServicecategories(service.CompanyId), "ServiceCategoryId", "Categoria", service.ServiceCategoryId);
-            ViewBag.TaxId = new SelectList(ComboHelper.GetTaxes(service.CompanyId), "TaxId", "Impuesto", service.TaxId);
-            return View(service);
+            ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "Cliente", directGeneral.ClientId);
+            ViewBag.DirectPaymentId = new SelectList(db.DirectPayments, "DirectPaymentId", "NotaCobro", directGeneral.DirectPaymentId);
+            ViewBag.ProfessionalId = new SelectList(db.Professionals, "ProfessionalId", "FirstName", directGeneral.ProfessionalId);
+            return View(directGeneral);
         }
 
-        // GET: Services/Edit/5
+        // GET: DirectGenerals/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var service = db.Services.Find(id);
-            if (service == null)
+            var directGeneral = db.DirectGenerals.Find(id);
+            if (directGeneral == null)
             {
                 return HttpNotFound();
             }
 
-            ViewBag.ServiceCategoryId = new SelectList(ComboHelper.GetServicecategories(service.CompanyId), "ServiceCategoryId", "Categoria", service.ServiceCategoryId);
-            ViewBag.TaxId = new SelectList(ComboHelper.GetTaxes(service.CompanyId), "TaxId", "Impuesto", service.TaxId);
-            return View(service);
+            ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "Cliente", directGeneral.ClientId);
+            ViewBag.DirectPaymentId = new SelectList(db.DirectPayments, "DirectPaymentId", "NotaCobro", directGeneral.DirectPaymentId);
+            ViewBag.ProfessionalId = new SelectList(db.Professionals, "ProfessionalId", "FirstName", directGeneral.ProfessionalId);
+            
+            return View(directGeneral);
         }
 
-        // POST: Services/Edit/5
+        // POST: DirectGenerals/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Service service)
+        public ActionResult Edit(DirectGeneral directGeneral)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(service).State = EntityState.Modified;
+                db.Entry(directGeneral).State = EntityState.Modified;
                 try
                 {
                     db.SaveChanges();
@@ -147,33 +167,35 @@ namespace NexxtSchedule.Controllers
                 }
             }
 
-            ViewBag.ServiceCategoryId = new SelectList(ComboHelper.GetServicecategories(service.CompanyId), "ServiceCategoryId", "Categoria", service.ServiceCategoryId);
-            ViewBag.TaxId = new SelectList(ComboHelper.GetTaxes(service.CompanyId), "TaxId", "Impuesto", service.TaxId);
-            return View(service);
+            ViewBag.ClientId = new SelectList(db.Clients, "ClientId", "Cliente", directGeneral.ClientId);
+            ViewBag.DirectPaymentId = new SelectList(db.DirectPayments, "DirectPaymentId", "NotaCobro", directGeneral.DirectPaymentId);
+            ViewBag.ProfessionalId = new SelectList(db.Professionals, "ProfessionalId", "FirstName", directGeneral.ProfessionalId);
+            
+            return View(directGeneral);
         }
 
-        // GET: Services/Delete/5
+        // GET: DirectGenerals/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Service service = db.Services.Find(id);
-            if (service == null)
+            DirectGeneral directGeneral = db.DirectGenerals.Find(id);
+            if (directGeneral == null)
             {
                 return HttpNotFound();
             }
-            return View(service);
+            return View(directGeneral);
         }
 
-        // POST: Services/Delete/5
+        // POST: DirectGenerals/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Service service = db.Services.Find(id);
-            db.Services.Remove(service);
+            DirectGeneral directGeneral = db.DirectGenerals.Find(id);
+            db.DirectGenerals.Remove(directGeneral);
             try
             {
                 db.SaveChanges();
@@ -192,7 +214,7 @@ namespace NexxtSchedule.Controllers
                     ModelState.AddModelError(string.Empty, ex.Message);
                 }
             }
-            return View(service);
+            return View(directGeneral);
         }
 
         protected override void Dispose(bool disposing)

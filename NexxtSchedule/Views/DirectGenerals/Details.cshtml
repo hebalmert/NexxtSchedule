@@ -1,0 +1,109 @@
+﻿@model NexxtSchedule.Models.DirectGeneral
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewEdit;
+}
+
+    <h2>@Resources.Resource.ViewEdit</h2>
+
+<div>
+    <h4>@Resources.Resource.DirectPayment_IndexView_Titulo1</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NotaCobro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NotaCobro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Professional.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Professional.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TasaProfesional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TasaProfesional)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.Cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.Cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServicioNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServicioNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tasa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tasa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PagoProfesional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PagoProfesional)
+        </dd>
+    </dl>
+</div>
+<p>
+    <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
+        <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
+    </button>
+    @*<button type="button" class="btn btn-info btn-sm" onclick="location.href ='@Url.Action("Edit", new { id = Model.DirectPaymentId})'">
+            <span class="glyphicon glyphicon-list"></span> @Resources.Resource.ButtonEdit
+        </button>*@
+</p>

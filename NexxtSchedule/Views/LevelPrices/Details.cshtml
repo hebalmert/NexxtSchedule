@@ -1,4 +1,4 @@
-﻿@model NexxtSchedule.Models.Identification
+﻿@model NexxtSchedule.Models.LevelPrice
 
 @{
     ViewBag.Title = @Resources.Resource.ViewDetail;
@@ -7,15 +7,15 @@
     <h2>@Resources.Resource.ViewDetail</h2>
 
 <div>
-    <h4>@Resources.Resource.Identification_IndexView_Titulo1</h4>
+    <h4>@Resources.Resource.LevelPrice_ViewIndex_Titulo1</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TipoDocumento)
+            @Html.DisplayNameFor(model => model.NivelPrecio)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TipoDocumento)
+            @Html.DisplayFor(model => model.NivelPrecio)
         </dd>
 
     </dl>
@@ -24,7 +24,7 @@
     <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
         <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
     </button>
-    <button type="button" class="btn btn-info btn-sm" onclick="location.href ='@Url.Action("Edit", new { id = Model.IdentificationId})'">
+    <button type="button" class="btn btn-info btn-sm" onclick="location.href ='@Url.Action("Edit", new { id = Model.LevelPriceId})'">
         <span class="glyphicon glyphicon-list"></span> @Resources.Resource.ButtonEdit
     </button>
 </p>

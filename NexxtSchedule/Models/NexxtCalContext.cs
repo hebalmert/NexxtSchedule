@@ -40,5 +40,11 @@ namespace NexxtSchedule.Models
         public System.Data.Entity.DbSet<NexxtSchedule.Models.Service> Services { get; set; }
 
         public System.Data.Entity.DbSet<NexxtSchedule.Models.Register> Registers { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSchedule.Models.LevelPrice> LevelPrices { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSchedule.Models.DirectPayment> DirectPayments { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSchedule.Models.DirectGeneral> DirectGenerals { get; set; }
     }
 }
