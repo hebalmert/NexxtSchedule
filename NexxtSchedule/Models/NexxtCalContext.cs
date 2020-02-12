@@ -46,5 +46,9 @@ namespace NexxtSchedule.Models
         public System.Data.Entity.DbSet<NexxtSchedule.Models.DirectPayment> DirectPayments { get; set; }
 
         public System.Data.Entity.DbSet<NexxtSchedule.Models.DirectGeneral> DirectGenerals { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSchedule.Models.PayProfessional> PayProfessionals { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSchedule.Models.PayProfessionalDetails> PayProfessionalsDetails { get; set; }
     }
 }

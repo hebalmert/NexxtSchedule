@@ -37,6 +37,12 @@ namespace NexxtSchedule.Models
         public string IdentificationNumber { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(ResourceType = typeof(Resource), Name = "Client_Model_Nacimiento")]
+        public DateTime Nacimiento { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [MaxLength(256, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
         [Index("User_UserName_Index", IsUnique = true)]
         [DataType(DataType.EmailAddress)]

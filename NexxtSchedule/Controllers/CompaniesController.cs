@@ -88,7 +88,8 @@ namespace NexxtSchedule.Controllers
                     {
                         CompanyId = company.CompanyId,
                         NotaCobro = 0,
-                        Egresos = 0
+                        Egresos = 0,
+                        Compobantepago = 0
                     };
                     db2.Registers.Add(registro);
                     db2.SaveChanges();

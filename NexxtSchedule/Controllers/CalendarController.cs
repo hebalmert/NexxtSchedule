@@ -8,6 +8,8 @@ using System.Web.Mvc;
 
 namespace NexxtSchedule.Controllers
 {
+    [Authorize(Roles = "User, Profe")]
+
     public class CalendarController : Controller
     {
         private NexxtCalContext db = new NexxtCalContext();

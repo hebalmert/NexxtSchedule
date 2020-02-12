@@ -106,5 +106,7 @@ namespace NexxtSchedule.Models
         public virtual Professional Professional { get; set; }
 
         public virtual Client Client { get; set; }
+
+        public virtual ICollection<PayProfessionalDetails> PayProfessionalDetails { get; set; }
     }
 }

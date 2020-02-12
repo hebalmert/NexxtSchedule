@@ -10,6 +10,8 @@ using NexxtSchedule.Models;
 
 namespace NexxtSchedule.Controllers
 {
+    [Authorize(Roles = "User")]
+
     public class RegistersController : Controller
     {
         private NexxtCalContext db = new NexxtCalContext();

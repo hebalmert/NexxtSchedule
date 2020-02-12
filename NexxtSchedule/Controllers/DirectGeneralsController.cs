@@ -11,6 +11,8 @@ using NexxtSchedule.Models;
 
 namespace NexxtSchedule.Controllers
 {
+    [Authorize(Roles = "User")]
+
     public class DirectGeneralsController : Controller
     {
         private NexxtCalContext db = new NexxtCalContext();

@@ -61,11 +61,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Agregar Item.
+        /// </summary>
+        public static string Button_Add {
+            get {
+                return ResourceManager.GetString("Button_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Volver.
         /// </summary>
         public static string ButtonBack {
             get {
                 return ResourceManager.GetString("ButtonBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comprar.
+        /// </summary>
+        public static string ButtonBuy {
+            get {
+                return ResourceManager.GetString("ButtonBuy", resourceCulture);
             }
         }
         
@@ -93,6 +111,15 @@ namespace Resources {
         public static string ButtonEdit {
             get {
                 return ResourceManager.GetString("ButtonEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entrar.
+        /// </summary>
+        public static string ButtonEntrar {
+            get {
+                return ResourceManager.GetString("ButtonEntrar", resourceCulture);
             }
         }
         
@@ -165,6 +192,15 @@ namespace Resources {
         public static string Client_Model_Movil {
             get {
                 return ResourceManager.GetString("Client_Model_Movil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nacimiento.
+        /// </summary>
+        public static string Client_Model_Nacimiento {
+            get {
+                return ResourceManager.GetString("Client_Model_Nacimiento", resourceCulture);
             }
         }
         
@@ -781,6 +817,204 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Categoria Servicio.
+        /// </summary>
+        public static string Menu_Administracion_Category {
+            get {
+                return ResourceManager.GetString("Menu_Administracion_Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cuenta por Profesional.
+        /// </summary>
+        public static string Menu_Administracion_CxProfesional {
+            get {
+                return ResourceManager.GetString("Menu_Administracion_CxProfesional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pago Profesionales.
+        /// </summary>
+        public static string Menu_Administracion_LiquidarProfesionales {
+            get {
+                return ResourceManager.GetString("Menu_Administracion_LiquidarProfesionales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Servicios.
+        /// </summary>
+        public static string Menu_Administracion_Service {
+            get {
+                return ResourceManager.GetString("Menu_Administracion_Service", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cobro Directo.
+        /// </summary>
+        public static string Menu_Adminitracion_CobroDirecto {
+            get {
+                return ResourceManager.GetString("Menu_Adminitracion_CobroDirecto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Agenda.
+        /// </summary>
+        public static string Menu_Agenda_Calendar {
+            get {
+                return ResourceManager.GetString("Menu_Agenda_Calendar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eventos.
+        /// </summary>
+        public static string Menu_Agenda_Eventos {
+            get {
+                return ResourceManager.GetString("Menu_Agenda_Eventos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clientes.
+        /// </summary>
+        public static string Menu_Archivo_Clients {
+            get {
+                return ResourceManager.GetString("Menu_Archivo_Clients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profesionales.
+        /// </summary>
+        public static string Menu_Archivo_Profesional {
+            get {
+                return ResourceManager.GetString("Menu_Archivo_Profesional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Agenda.
+        /// </summary>
+        public static string Menu_Link1 {
+            get {
+                return ResourceManager.GetString("Menu_Link1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Servicio.
+        /// </summary>
+        public static string Menu_Link2 {
+            get {
+                return ResourceManager.GetString("Menu_Link2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comprar.
+        /// </summary>
+        public static string Menu_Link3 {
+            get {
+                return ResourceManager.GetString("Menu_Link3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Consecutivos.
+        /// </summary>
+        public static string Menu_Sistema_Consecutivos {
+            get {
+                return ResourceManager.GetString("Menu_Sistema_Consecutivos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encabezado.
+        /// </summary>
+        public static string Menu_Sistema_Encabezado {
+            get {
+                return ResourceManager.GetString("Menu_Sistema_Encabezado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Impuesto.
+        /// </summary>
+        public static string Menu_Sistema_Impuesto {
+            get {
+                return ResourceManager.GetString("Menu_Sistema_Impuesto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Documento Identidad.
+        /// </summary>
+        public static string Menu_Sistema_Indetificador {
+            get {
+                return ResourceManager.GetString("Menu_Sistema_Indetificador", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La Agenda de Citas, permite agendar la cita de multiples Profesionales en un solo sitio.  Podra disoner de una vista por Mes, Semana o por Dia.  Sus Profesionales podran verificar o agregar nuevas citas a sus agendas..
+        /// </summary>
+        public static string Menu_Text1 {
+            get {
+                return ResourceManager.GetString("Menu_Text1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Puedes crear servicios con 3 niveles de precios y agrupar estos servicios por Categorias.  Los profesionales podran hacer cobros por porcentajes de los servicos cobrados, demas de poder hacer los pagos a cada Profesional..
+        /// </summary>
+        public static string Menu_Text2 {
+            get {
+                return ResourceManager.GetString("Menu_Text2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compra tu licencia por un Año, usando Mercadopago desde Colombia o desde Cualquier lugar con PayPal.  En los siguientes Links..
+        /// </summary>
+        public static string Menu_Text3 {
+            get {
+                return ResourceManager.GetString("Menu_Text3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Software de Agenda.
+        /// </summary>
+        public static string Menu_Titulo {
+            get {
+                return ResourceManager.GetString("Menu_Titulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sistema de Acceso.
+        /// </summary>
+        public static string MenuAcceso {
+            get {
+                return ResourceManager.GetString("MenuAcceso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ingresar Usuario.
+        /// </summary>
+        public static string MenuLogin {
+            get {
+                return ResourceManager.GetString("MenuLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to En Sistema/Texto Encabezado, podra cambiar por la direccion, telefono y correo.
         /// </summary>
         public static string Msg_Compny_CreateHeadtext {
@@ -804,6 +1038,15 @@ namespace Resources {
         public static string Msg_MaxLength {
             get {
                 return ResourceManager.GetString("Msg_MaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Existen Registros para Continuar.
+        /// </summary>
+        public static string Msg_NoRegisterToContinue {
+            get {
+                return ResourceManager.GetString("Msg_NoRegisterToContinue", resourceCulture);
             }
         }
         
@@ -840,6 +1083,69 @@ namespace Resources {
         public static string MsgDelete {
             get {
                 return ResourceManager.GetString("MsgDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Liquidacion Profesionales.
+        /// </summary>
+        public static string PayProfessional_IndexView_Titulo1 {
+            get {
+                return ResourceManager.GetString("PayProfessional_IndexView_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compañia.
+        /// </summary>
+        public static string PayProfessional_Model_Company {
+            get {
+                return ResourceManager.GetString("PayProfessional_Model_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha.
+        /// </summary>
+        public static string PayProfessional_Model_Date {
+            get {
+                return ResourceManager.GetString("PayProfessional_Model_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detalle.
+        /// </summary>
+        public static string PayProfessional_Model_Detalle {
+            get {
+                return ResourceManager.GetString("PayProfessional_Model_Detalle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nota Pago.
+        /// </summary>
+        public static string PayProfessional_Model_NotaPago {
+            get {
+                return ResourceManager.GetString("PayProfessional_Model_NotaPago", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pago Profesional.
+        /// </summary>
+        public static string PayProfessional_Model_PagoProfessional {
+            get {
+                return ResourceManager.GetString("PayProfessional_Model_PagoProfessional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profesional.
+        /// </summary>
+        public static string PayProfessional_Model_Professional {
+            get {
+                return ResourceManager.GetString("PayProfessional_Model_Professional", resourceCulture);
             }
         }
         
@@ -889,7 +1195,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nombre.
+        ///   Looks up a localized string similar to Profesional.
         /// </summary>
         public static string Profe_Model_FullName {
             get {
@@ -975,6 +1281,15 @@ namespace Resources {
         public static string Register_Model_BillingNote {
             get {
                 return ResourceManager.GetString("Register_Model_BillingNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comprobante Pago.
+        /// </summary>
+        public static string Register_Model_ComprobantePago {
+            get {
+                return ResourceManager.GetString("Register_Model_ComprobantePago", resourceCulture);
             }
         }
         

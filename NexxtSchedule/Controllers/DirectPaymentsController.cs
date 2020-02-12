@@ -11,7 +11,7 @@ using NexxtSchedule.Models;
 
 namespace NexxtSchedule.Controllers
 {
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Profe")]
 
     public class DirectPaymentsController : Controller
     {
@@ -33,7 +33,7 @@ namespace NexxtSchedule.Controllers
                 .Include(d => d.Service)
                 .Include(d => d.ServiceCategory);
 
-            return View(directPayments.OrderByDescending(o=> o.Date).ToList());
+            return View(directPayments.OrderByDescending(o=> o.NotaCobro).ToList());
         }
 
         // GET: DirectPayments/Details/5

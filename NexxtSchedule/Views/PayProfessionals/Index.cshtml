@@ -1,0 +1,75 @@
+﻿@model IEnumerable<NexxtSchedule.Models.PayProfessional>
+
+@{
+    ViewBag.Title = @Resources.Resource.PayProfessional_IndexView_Titulo1;
+}
+
+<h2>@Resources.Resource.PayProfessional_IndexView_Titulo1</h2>
+
+<p>
+    <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
+            '@Url.Action("Create", "PayProfessionals", new { })'">
+        <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
+    </button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NotaPago)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Professional.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Detalle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PagoProfesional)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotaPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Professional.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detalle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PagoProfesional)
+            </td>
+            <td>
+                @if (item.PagoProfesional == 0)
+                {
+                    <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+                '@Url.Action("Edit", "PayProfessionals", new { id = item.PayProfessionalId})'">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                }
+
+                <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+                    '@Url.Action("Details", "PayProfessionals", new { id = item.PayProfessionalId})'">
+                    <span class="glyphicon glyphicon-list"></span>
+                </button>
+
+                <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+            '@Url.Action("Delete", "PayProfessionals", new { id = item.PayProfessionalId})'">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>

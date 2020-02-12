@@ -55,7 +55,11 @@ namespace NexxtSchedule.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            var client = new Client { CompanyId = user.CompanyId };
+            var client = new Client 
+            { 
+                CompanyId = user.CompanyId,
+                Nacimiento = DateTime.Today
+            };
 
             ViewBag.IdentificationId = new SelectList(ComboHelper.GetIdentifications(user.CompanyId), "IdentificationId", "TipoDocumento", (0));
 

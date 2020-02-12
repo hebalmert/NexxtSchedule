@@ -97,5 +97,9 @@ namespace NexxtSchedule.Models
         public virtual ICollection<DirectPayment> DirectPayments { get; set; }
 
         public virtual ICollection<DirectGeneral> DirectGenerals { get; set; }
+
+        public virtual ICollection<PayProfessional> PayProfessionals { get; set; }
+
+        public virtual ICollection<PayProfessionalDetails> PayProfessionalDetails { get; set; }
     }
 }

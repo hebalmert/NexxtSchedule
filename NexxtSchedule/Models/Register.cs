@@ -23,6 +23,10 @@ namespace NexxtSchedule.Models
         [Display(ResourceType = typeof(Resource), Name = "Register_Model_Expenses")]
         public int Egresos { get; set; }
 
+        [Range(0, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
+        [Display(ResourceType = typeof(Resource), Name = "Register_Model_ComprobantePago")]
+        public int Compobantepago { get; set; }
+
         public virtual Company Company { get; set; }
     }
 }

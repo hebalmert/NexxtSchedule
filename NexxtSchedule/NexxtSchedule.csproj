@@ -197,6 +197,7 @@
     <Compile Include="Controllers\IdentificationsController.cs" />
     <Compile Include="Controllers\LevelPricesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PayProfessionalsController.cs" />
     <Compile Include="Controllers\ProfessionalsController.cs" />
     <Compile Include="Controllers\RegistersController.cs" />
     <Compile Include="Controllers\ServiceCategoriesController.cs" />
@@ -221,6 +222,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ModelCalendar.cs" />
     <Compile Include="Models\NexxtCalContext.cs" />
+    <Compile Include="Models\PayProfessional.cs" />
+    <Compile Include="Models\PayProfessionalDetails.cs" />
     <Compile Include="Models\Professional.cs" />
     <Compile Include="Models\Register.cs" />
     <Compile Include="Models\Service.cs" />
@@ -453,6 +456,11 @@
     <Content Include="Views\DirectGenerals\Details.cshtml" />
     <Content Include="Views\DirectGenerals\Edit.cshtml" />
     <Content Include="Views\DirectGenerals\Index.cshtml" />
+    <Content Include="Views\PayProfessionals\Create.cshtml" />
+    <Content Include="Views\PayProfessionals\Delete.cshtml" />
+    <Content Include="Views\PayProfessionals\Details.cshtml" />
+    <Content Include="Views\PayProfessionals\Edit.cshtml" />
+    <Content Include="Views\PayProfessionals\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

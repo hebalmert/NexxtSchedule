@@ -77,6 +77,7 @@ namespace NexxtSchedule.Models
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
+        [DisplayFormat(DataFormatString = "{0:N2}", ApplyFormatInEditMode = false)]
         [Display(ResourceType = typeof(Resource), Name = "DirectPayment_Model_Cantidad")]
         public int Cantidad { get; set; }
 

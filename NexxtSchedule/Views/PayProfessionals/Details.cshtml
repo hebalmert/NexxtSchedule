@@ -1,0 +1,145 @@
+﻿@model NexxtSchedule.Models.PayProfessional
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDetail;
+}
+
+<h2>@Resources.Resource.ViewDetail</h2>
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div>
+            <h4>@Resources.Resource.PayProfessional_IndexView_Titulo1</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Professional.FirstName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Professional.FirstName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Date)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Date)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NotaPago)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NotaPago)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Detalle)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Detalle)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PagoProfesional)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PagoProfesional)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
+                <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
+            </button>
+
+            @if (Model.PayProfessionalDetails.Count == 0)
+            {
+                <button type="button" class="btn btn-info btn-sm" onclick="location.href ='@Url.Action("Edit", new { id = Model.PayProfessionalId})'">
+                    <span class="glyphicon glyphicon-list"></span> @Resources.Resource.ButtonEdit
+                </button>
+
+                <button type="button" class="btn btn-warning btn-sm" onclick="location.href ='@Url.Action("Adds", new { idPay = Model.PayProfessionalId, idProfe = Model.ProfessionalId, idCompany = Model.CompanyId, NPago = Model.NotaPago})'">
+                    <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.Button_Add
+                </button>
+            }
+        </p>
+    </div>
+    <div class="col-md-6">
+        <div>
+            <h4>Servicios Pagados</h4>
+            <hr>
+            @if (Model.PayProfessionalDetails.Count == 0)
+            {
+                <h5>No Hay Servicios Agregados</h5>
+            }
+            else
+            {
+                <table class="table table-bordered">
+                    <tr class="table-secondary">
+                        <th>
+                            Nota Cobro #
+                        </th>
+                        <th>
+                            Fecha
+                        </th>
+                        <th>
+                            Servicio
+                        </th>
+                        <th>
+                            Monto
+                        </th>
+                    </tr>
+
+                    @{
+                        int registros = 0;
+                        decimal sum = 0;
+                    }
+
+                    @foreach (var item in Model.PayProfessionalDetails.ToList())
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NotaCobro)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DirectGeneral.ServicioNombre)
+                            </td>
+                            <td align="right">
+                                @Html.DisplayFor(modelItem => item.PagoProfesional)
+                            </td>
+                            @{
+                                registros += +1;
+                                sum += item.PagoProfesional;
+                            }
+                        </tr>
+                    }
+                    <tr>
+                        <td align="center">
+                        </td>
+                        <td align="center">
+                            <strong>Tickets</strong>
+                        </td>
+                        <td align="right">
+                            Registros: @registros
+                        </td>
+                        <td align="right">
+                            <strong>@sum</strong>
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </div>
+</div>

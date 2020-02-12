@@ -120,6 +120,9 @@
   <data name="ButtonBack" xml:space="preserve">
     <value>Volver</value>
   </data>
+  <data name="ButtonBuy" xml:space="preserve">
+    <value>Comprar</value>
+  </data>
   <data name="ButtonDelete" xml:space="preserve">
     <value>Borrar</value>
   </data>
@@ -129,6 +132,9 @@
   <data name="ButtonEdit" xml:space="preserve">
     <value>Editar</value>
   </data>
+  <data name="ButtonEntrar" xml:space="preserve">
+    <value>Entrar</value>
+  </data>
   <data name="ButtonNew" xml:space="preserve">
     <value>Nuevo</value>
   </data>
@@ -137,6 +143,9 @@
   </data>
   <data name="ButtonSearch" xml:space="preserve">
     <value>Buscar</value>
+  </data>
+  <data name="Button_Add" xml:space="preserve">
+    <value>Agregar Item</value>
   </data>
   <data name="Client_IndeView_titulo1" xml:space="preserve">
     <value>Clientes</value>
@@ -152,6 +161,9 @@
   </data>
   <data name="Client_Model_Movil" xml:space="preserve">
     <value>Movil</value>
+  </data>
+  <data name="Client_Model_Nacimiento" xml:space="preserve">
+    <value>Nacimiento</value>
   </data>
   <data name="Client_Model_NumeroDocu" xml:space="preserve">
     <value>Numero Documento</value>
@@ -357,6 +369,72 @@
   <data name="LevelPrice_ViewIndex_Titulo1" xml:space="preserve">
     <value>Nivel Precio</value>
   </data>
+  <data name="MenuAcceso" xml:space="preserve">
+    <value>Sistema de Acceso</value>
+  </data>
+  <data name="MenuLogin" xml:space="preserve">
+    <value>Ingresar Usuario</value>
+  </data>
+  <data name="Menu_Administracion_Category" xml:space="preserve">
+    <value>Categoria Servicio</value>
+  </data>
+  <data name="Menu_Administracion_CxProfesional" xml:space="preserve">
+    <value>Cuenta por Profesional</value>
+  </data>
+  <data name="Menu_Administracion_LiquidarProfesionales" xml:space="preserve">
+    <value>Pago Profesionales</value>
+  </data>
+  <data name="Menu_Administracion_Service" xml:space="preserve">
+    <value>Servicios</value>
+  </data>
+  <data name="Menu_Adminitracion_CobroDirecto" xml:space="preserve">
+    <value>Cobro Directo</value>
+  </data>
+  <data name="Menu_Agenda_Calendar" xml:space="preserve">
+    <value>Agenda</value>
+  </data>
+  <data name="Menu_Agenda_Eventos" xml:space="preserve">
+    <value>Eventos</value>
+  </data>
+  <data name="Menu_Archivo_Clients" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
+  <data name="Menu_Archivo_Profesional" xml:space="preserve">
+    <value>Profesionales</value>
+  </data>
+  <data name="Menu_Link1" xml:space="preserve">
+    <value>Agenda</value>
+  </data>
+  <data name="Menu_Link2" xml:space="preserve">
+    <value>Servicio</value>
+  </data>
+  <data name="Menu_Link3" xml:space="preserve">
+    <value>Comprar</value>
+  </data>
+  <data name="Menu_Sistema_Consecutivos" xml:space="preserve">
+    <value>Consecutivos</value>
+  </data>
+  <data name="Menu_Sistema_Encabezado" xml:space="preserve">
+    <value>Encabezado</value>
+  </data>
+  <data name="Menu_Sistema_Impuesto" xml:space="preserve">
+    <value>Impuesto</value>
+  </data>
+  <data name="Menu_Sistema_Indetificador" xml:space="preserve">
+    <value>Documento Identidad</value>
+  </data>
+  <data name="Menu_Text1" xml:space="preserve">
+    <value>La Agenda de Citas, permite agendar la cita de multiples Profesionales en un solo sitio.  Podra disoner de una vista por Mes, Semana o por Dia.  Sus Profesionales podran verificar o agregar nuevas citas a sus agendas.</value>
+  </data>
+  <data name="Menu_Text2" xml:space="preserve">
+    <value>Puedes crear servicios con 3 niveles de precios y agrupar estos servicios por Categorias.  Los profesionales podran hacer cobros por porcentajes de los servicos cobrados, demas de poder hacer los pagos a cada Profesional.</value>
+  </data>
+  <data name="Menu_Text3" xml:space="preserve">
+    <value>Compra tu licencia por un Año, usando Mercadopago desde Colombia o desde Cualquier lugar con PayPal.  En los siguientes Links.</value>
+  </data>
+  <data name="Menu_Titulo" xml:space="preserve">
+    <value>Software de Agenda</value>
+  </data>
   <data name="MsgDelete" xml:space="preserve">
     <value>Desea Eliminar este Registro?</value>
   </data>
@@ -369,6 +447,9 @@
   <data name="Msg_MaxLength" xml:space="preserve">
     <value>El Campo {0} debe ser menor de {1} characters</value>
   </data>
+  <data name="Msg_NoRegisterToContinue" xml:space="preserve">
+    <value>No Existen Registros para Continuar</value>
+  </data>
   <data name="Msg_Range" xml:space="preserve">
     <value>Debe Seleccionar un Item</value>
   </data>
@@ -377,6 +458,27 @@
   </data>
   <data name="Msg_Required" xml:space="preserve">
     <value>El Campo {0} es Requerido</value>
+  </data>
+  <data name="PayProfessional_IndexView_Titulo1" xml:space="preserve">
+    <value>Liquidacion Profesionales</value>
+  </data>
+  <data name="PayProfessional_Model_Company" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="PayProfessional_Model_Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="PayProfessional_Model_Detalle" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="PayProfessional_Model_NotaPago" xml:space="preserve">
+    <value>Nota Pago</value>
+  </data>
+  <data name="PayProfessional_Model_PagoProfessional" xml:space="preserve">
+    <value>Pago Profesional</value>
+  </data>
+  <data name="PayProfessional_Model_Professional" xml:space="preserve">
+    <value>Profesional</value>
   </data>
   <data name="Profe_IndexView_Titulo1" xml:space="preserve">
     <value>Profesional</value>
@@ -394,7 +496,7 @@
     <value>Nombres</value>
   </data>
   <data name="Profe_Model_FullName" xml:space="preserve">
-    <value>Nombre</value>
+    <value>Profesional</value>
   </data>
   <data name="Profe_Model_LastName" xml:space="preserve">
     <value>Apellidos</value>
@@ -422,6 +524,9 @@
   </data>
   <data name="Register_Model_BillingNote" xml:space="preserve">
     <value>Nota Cobro</value>
+  </data>
+  <data name="Register_Model_ComprobantePago" xml:space="preserve">
+    <value>Comprobante Pago</value>
   </data>
   <data name="Register_Model_Expenses" xml:space="preserve">
     <value>Egresos</value>

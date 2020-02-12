@@ -20,34 +20,41 @@
         <th>
             @Html.DisplayNameFor(model => model.Egresos)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Compobantepago)
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NotaCobro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Egresos)
-        </td>
-        <td>
-            <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
-            '@Url.Action("Edit", "Registers", new { id = item.RegisterId})'">
-                <span class="glyphicon glyphicon-pencil"></span>
-            </button>
+    @foreach (var item in Model) 
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotaCobro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Egresos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Compobantepago)
+            </td>
+            <td>
+                <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+                    '@Url.Action("Edit", "Registers", new { id = item.RegisterId})'">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
 
-            <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
-            '@Url.Action("Details", "Registers", new { id = item.RegisterId})'">
-                <span class="glyphicon glyphicon-list"></span>
-            </button>
+                <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+                    '@Url.Action("Details", "Registers", new { id = item.RegisterId})'">
+                    <span class="glyphicon glyphicon-list"></span>
+                </button>
 
-            @*<button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
-            '@Url.Action("Delete", "Registers", new { id = item.RegisterId})'">
-                <span class="glyphicon glyphicon-trash"></span>
-            </button>*@
-        </td>
-    </tr>
-}
+                @*<button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+                    '@Url.Action("Delete", "Registers", new { id = item.RegisterId})'">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>*@
+            </td>
+        </tr>
+    }
 
 </table>
