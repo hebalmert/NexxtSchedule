@@ -123,6 +123,9 @@
   <data name="ButtonBuy" xml:space="preserve">
     <value>Comprar</value>
   </data>
+  <data name="ButtonClose" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
   <data name="ButtonDelete" xml:space="preserve">
     <value>Borrar</value>
   </data>
@@ -137,6 +140,12 @@
   </data>
   <data name="ButtonNew" xml:space="preserve">
     <value>Nuevo</value>
+  </data>
+  <data name="ButtonPrint" xml:space="preserve">
+    <value>Imprimir</value>
+  </data>
+  <data name="ButtonReport" xml:space="preserve">
+    <value>Reporte</value>
   </data>
   <data name="ButtonSave" xml:space="preserve">
     <value>Guardar</value>
@@ -372,6 +381,9 @@
   <data name="MenuAcceso" xml:space="preserve">
     <value>Sistema de Acceso</value>
   </data>
+  <data name="MenuAdmin_Egresos" xml:space="preserve">
+    <value>Egresos</value>
+  </data>
   <data name="MenuLogin" xml:space="preserve">
     <value>Ingresar Usuario</value>
   </data>
@@ -459,6 +471,42 @@
   <data name="Msg_Required" xml:space="preserve">
     <value>El Campo {0} es Requerido</value>
   </data>
+  <data name="OutcomeDetail_Model_Document" xml:space="preserve">
+    <value>Documento</value>
+  </data>
+  <data name="OutcomeDetail_Model_Valor" xml:space="preserve">
+    <value>Monto</value>
+  </data>
+  <data name="OutComes_Model_Close" xml:space="preserve">
+    <value>Cerrado</value>
+  </data>
+  <data name="OutComes_Model_TotalValue" xml:space="preserve">
+    <value>Total Items</value>
+  </data>
+  <data name="Outcome_IndexView_Titulo1" xml:space="preserve">
+    <value>Egresos</value>
+  </data>
+  <data name="Outcome_IndexView_Titulo12" xml:space="preserve">
+    <value>Items Egresos</value>
+  </data>
+  <data name="Outcome_Model_Beneficiario" xml:space="preserve">
+    <value>Beneficiario</value>
+  </data>
+  <data name="Outcome_Model_Company" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="Outcome_Model_Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="Outcome_Model_Detalle" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="Outcome_Model_Egreso" xml:space="preserve">
+    <value>Egreso</value>
+  </data>
+  <data name="Outcome_Model_TotalValue" xml:space="preserve">
+    <value>Total Egreso</value>
+  </data>
   <data name="PayProfessional_IndexView_Titulo1" xml:space="preserve">
     <value>Liquidacion Profesionales</value>
   </data>
@@ -479,6 +527,15 @@
   </data>
   <data name="PayProfessional_Model_Professional" xml:space="preserve">
     <value>Profesional</value>
+  </data>
+  <data name="PrintViewData_Model_Company" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="PrintViewData_Model_FechaDesde" xml:space="preserve">
+    <value>Desde</value>
+  </data>
+  <data name="PrintViewData_Model_FechaHasta" xml:space="preserve">
+    <value>Hasta</value>
   </data>
   <data name="Profe_IndexView_Titulo1" xml:space="preserve">
     <value>Profesional</value>

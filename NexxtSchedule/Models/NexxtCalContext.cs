@@ -50,5 +50,9 @@ namespace NexxtSchedule.Models
         public System.Data.Entity.DbSet<NexxtSchedule.Models.PayProfessional> PayProfessionals { get; set; }
 
         public System.Data.Entity.DbSet<NexxtSchedule.Models.PayProfessionalDetails> PayProfessionalsDetails { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSchedule.Models.Outcome> Outcomes { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSchedule.Models.OutcomeDetail> OutcomeDetails { get; set; }
     }
 }

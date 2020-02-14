@@ -88,6 +88,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cerrar.
+        /// </summary>
+        public static string ButtonClose {
+            get {
+                return ResourceManager.GetString("ButtonClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Borrar.
         /// </summary>
         public static string ButtonDelete {
@@ -129,6 +138,24 @@ namespace Resources {
         public static string ButtonNew {
             get {
                 return ResourceManager.GetString("ButtonNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imprimir.
+        /// </summary>
+        public static string ButtonPrint {
+            get {
+                return ResourceManager.GetString("ButtonPrint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reporte.
+        /// </summary>
+        public static string ButtonReport {
+            get {
+                return ResourceManager.GetString("ButtonReport", resourceCulture);
             }
         }
         
@@ -1006,6 +1033,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Egresos.
+        /// </summary>
+        public static string MenuAdmin_Egresos {
+            get {
+                return ResourceManager.GetString("MenuAdmin_Egresos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ingresar Usuario.
         /// </summary>
         public static string MenuLogin {
@@ -1087,6 +1123,114 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Egresos.
+        /// </summary>
+        public static string Outcome_IndexView_Titulo1 {
+            get {
+                return ResourceManager.GetString("Outcome_IndexView_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Items Egresos.
+        /// </summary>
+        public static string Outcome_IndexView_Titulo12 {
+            get {
+                return ResourceManager.GetString("Outcome_IndexView_Titulo12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beneficiario.
+        /// </summary>
+        public static string Outcome_Model_Beneficiario {
+            get {
+                return ResourceManager.GetString("Outcome_Model_Beneficiario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compañia.
+        /// </summary>
+        public static string Outcome_Model_Company {
+            get {
+                return ResourceManager.GetString("Outcome_Model_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha.
+        /// </summary>
+        public static string Outcome_Model_Date {
+            get {
+                return ResourceManager.GetString("Outcome_Model_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detalle.
+        /// </summary>
+        public static string Outcome_Model_Detalle {
+            get {
+                return ResourceManager.GetString("Outcome_Model_Detalle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Egreso.
+        /// </summary>
+        public static string Outcome_Model_Egreso {
+            get {
+                return ResourceManager.GetString("Outcome_Model_Egreso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Egreso.
+        /// </summary>
+        public static string Outcome_Model_TotalValue {
+            get {
+                return ResourceManager.GetString("Outcome_Model_TotalValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Documento.
+        /// </summary>
+        public static string OutcomeDetail_Model_Document {
+            get {
+                return ResourceManager.GetString("OutcomeDetail_Model_Document", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monto.
+        /// </summary>
+        public static string OutcomeDetail_Model_Valor {
+            get {
+                return ResourceManager.GetString("OutcomeDetail_Model_Valor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cerrado.
+        /// </summary>
+        public static string OutComes_Model_Close {
+            get {
+                return ResourceManager.GetString("OutComes_Model_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Items.
+        /// </summary>
+        public static string OutComes_Model_TotalValue {
+            get {
+                return ResourceManager.GetString("OutComes_Model_TotalValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Liquidacion Profesionales.
         /// </summary>
         public static string PayProfessional_IndexView_Titulo1 {
@@ -1146,6 +1290,33 @@ namespace Resources {
         public static string PayProfessional_Model_Professional {
             get {
                 return ResourceManager.GetString("PayProfessional_Model_Professional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compañia.
+        /// </summary>
+        public static string PrintViewData_Model_Company {
+            get {
+                return ResourceManager.GetString("PrintViewData_Model_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desde.
+        /// </summary>
+        public static string PrintViewData_Model_FechaDesde {
+            get {
+                return ResourceManager.GetString("PrintViewData_Model_FechaDesde", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hasta.
+        /// </summary>
+        public static string PrintViewData_Model_FechaHasta {
+            get {
+                return ResourceManager.GetString("PrintViewData_Model_FechaHasta", resourceCulture);
             }
         }
         

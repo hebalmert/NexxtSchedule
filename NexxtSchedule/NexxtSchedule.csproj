@@ -46,6 +46,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -197,6 +200,7 @@
     <Compile Include="Controllers\IdentificationsController.cs" />
     <Compile Include="Controllers\LevelPricesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OutcomesController.cs" />
     <Compile Include="Controllers\PayProfessionalsController.cs" />
     <Compile Include="Controllers\ProfessionalsController.cs" />
     <Compile Include="Controllers\RegistersController.cs" />
@@ -222,8 +226,11 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ModelCalendar.cs" />
     <Compile Include="Models\NexxtCalContext.cs" />
+    <Compile Include="Models\Outcome.cs" />
+    <Compile Include="Models\OutcomeDetail.cs" />
     <Compile Include="Models\PayProfessional.cs" />
     <Compile Include="Models\PayProfessionalDetails.cs" />
+    <Compile Include="Models\PrintViewDate.cs" />
     <Compile Include="Models\Professional.cs" />
     <Compile Include="Models\Register.cs" />
     <Compile Include="Models\Service.cs" />
@@ -461,6 +468,14 @@
     <Content Include="Views\PayProfessionals\Details.cshtml" />
     <Content Include="Views\PayProfessionals\Edit.cshtml" />
     <Content Include="Views\PayProfessionals\Index.cshtml" />
+    <Content Include="Views\Outcomes\Create.cshtml" />
+    <Content Include="Views\Outcomes\Delete.cshtml" />
+    <Content Include="Views\Outcomes\Details.cshtml" />
+    <Content Include="Views\Outcomes\Edit.cshtml" />
+    <Content Include="Views\Outcomes\Index.cshtml" />
+    <Content Include="Views\Outcomes\AddItems.cshtml" />
+    <Content Include="Views\Outcomes\PrintOutComeReport.cshtml" />
+    <Content Include="Views\Outcomes\PrintReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

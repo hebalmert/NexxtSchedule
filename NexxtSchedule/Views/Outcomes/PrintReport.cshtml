@@ -1,0 +1,80 @@
+﻿@*@model IEnumerable<NexxtDent.Models.Outcome>*@
+
+@model PagedList.IPagedList<NexxtSchedule.Models.Outcome>
+
+
+@{
+    ViewBag.Title = @Resources.Resource.Outcome_IndexView_Titulo1;
+}
+
+<h2>@Resources.Resource.Outcome_IndexView_Titulo1</h2>
+
+<p>
+    @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Egreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Beneficiario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Detalle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().TotalValue);
+        </th>
+        <th></th>
+    </tr>
+    @{
+        decimal TotalTotal = 0.0M;
+        int registros = 0;
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Egreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Beneficiario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detalle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalValue)
+            </td>
+            @{
+                TotalTotal += item.TotalValue;
+                registros += +1;
+            }
+        </tr>
+    }
+    <tr>
+    </tr>
+    <tr>
+        <td align="center">
+        </td>
+        <td align="center">
+        </td>
+        <td align="center">
+            <strong>Totales</strong>
+        </td>
+        <td align="right">
+            Registros: @registros
+        </td>
+        <td align="center">
+            Total Egresos: @TotalTotal
+        </td>
+    </tr>
+</table>

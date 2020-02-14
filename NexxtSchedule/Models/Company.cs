@@ -101,5 +101,7 @@ namespace NexxtSchedule.Models
         public virtual ICollection<PayProfessional> PayProfessionals { get; set; }
 
         public virtual ICollection<PayProfessionalDetails> PayProfessionalDetails { get; set; }
+
+        public virtual ICollection<Outcome> Outcomes { get; set; }
     }
 }
