@@ -78,6 +78,9 @@ namespace NexxtSchedule.Controllers
                 db.Clients.Add(client);
                 try
                 {
+                    string n1 = client.FirstName;
+                    string n2 = client.LastName;
+                    client.Cliente = n1 + " " + n2;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -126,6 +129,10 @@ namespace NexxtSchedule.Controllers
         {
             if (ModelState.IsValid)
             {
+                string n1 = client.FirstName;
+                string n2 = client.LastName;
+                client.Cliente = n1 + " " + n2;
+
                 db.Entry(client).State = EntityState.Modified;
                 try
                 {
