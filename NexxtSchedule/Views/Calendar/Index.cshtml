@@ -261,7 +261,7 @@
                     {
                         contentHeight: 400,
                         defaultDate: new Date(),
-                        timeFormat: 'h(:mm)a',
+                        timeFormat: 'h(:mm) A',
                         header:
                         {
                             left: 'prev,next today',
@@ -278,10 +278,10 @@
                             var $description = $('<div/>');
                             $description.append($('<p/>').html('<b>Profesional: </b>' + calEvent.Profesional));
                             $description.append($('<p/>').html('<strong><b>Paciente: </b></strong>' + calEvent.Cliente));
-                            $description.append($('<p/>').html('<b>Start: </b>' + calEvent.start.format("MM-DD-YYYY hh:mm a")));
+                            $description.append($('<p/>').html('<b>Start: </b>' + calEvent.start.format("MM/DD/YYYY hh:mm A")));
                             if (calEvent.end != null)
                             {
-                                $description.append($('<p/>').html('<b>End: </b>' + calEvent.end.format("MM-DD-YYYY hh:mm a")));
+                                $description.append($('<p/>').html('<b>End: </b>' + calEvent.end.format("MM/DD/YYYY hh:mm A")));
                             }
                             $description.append($('<p/>').html('<b>Description: </b>' + calEvent.description));
                             $('#myModal #pDetails').empty().html($description);
@@ -301,8 +301,8 @@
                                     Cliente:'',
                                     title: '',
                                     description: '',
-                                    start: start,
-                                    end: end,
+                                    start:start, 
+                                    end:end,   
                                     allDay: false,
                                     color: ''
                                 };
@@ -408,7 +408,7 @@
 
             $('#btnSave').click(function ()
             {
-                //$('#myModal').modal('hide'); //se hace un cierre del modal de Detalle que el Calendario se refresque completo.
+                $('#myModal').modal('hide'); //se hace un cierre del modal de Detalle que el Calendario se refresque completo.
 
                 //Validation/
                 if ($('#txtSubject').val().trim() == "")

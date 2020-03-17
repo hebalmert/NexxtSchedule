@@ -118,6 +118,15 @@ namespace NexxtSchedule.Classes
             return levelprice.OrderBy(d => d.NivelPrecio).ToList();
         }
 
+        public static TimeZoneInfo GetTimeZone()
+        {
+            TimeZoneInfo tz = TimeZoneInfo.CreateCustomTimeZone("COLOMBIA", new TimeSpan(-3, 0, 0), "Colombia", "Colombia");
+
+            return tz;
+        }
+
+
+
         public void Dispose()
         {
             db.Dispose();

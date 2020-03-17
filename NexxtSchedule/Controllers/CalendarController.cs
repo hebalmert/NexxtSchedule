@@ -62,8 +62,8 @@ namespace NexxtSchedule.Controllers
                         v.ClientId = e.ClientId;
                         v.Cliente = clientes.Cliente;
                         v.Subject = e.Subject;
-                        v.Start = e.Start;
-                        v.End = e.End;
+                        v.Start = TimeZoneInfo.ConvertTimeFromUtc(e.Start, ComboHelper.GetTimeZone());
+                        v.End = TimeZoneInfo.ConvertTimeFromUtc(e.End, ComboHelper.GetTimeZone());
                         v.Description = e.Description;
                         v.IsFullDay = e.IsFullDay;
                         v.ThemeColor = e.ThemeColor;
@@ -76,6 +76,10 @@ namespace NexxtSchedule.Controllers
                     db2.Configuration.ProxyCreationEnabled = false;
                     var user = db2.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
 
+                    //DateTime date1 = e.Start;
+                    //TimeZoneInfo tz = TimeZoneInfo.CreateCustomTimeZone("COLOMBIA", new TimeSpan(-3, 0, 0), "Colombia", "Colombia");
+                    //DateTime custDateTime1 = TimeZoneInfo.ConvertTimeFromUtc(date1, tz);
+
                     var nuevoEvento = new Event
                     {
                         CompanyId = user.CompanyId,
@@ -84,8 +88,8 @@ namespace NexxtSchedule.Controllers
                         ClientId = e.ClientId,
                         Cliente = clientes.Cliente,
                         Subject = e.Subject,
-                        Start = e.Start,
-                        End = e.End,
+                        Start = TimeZoneInfo.ConvertTimeFromUtc(e.Start, ComboHelper.GetTimeZone()),
+                        End = TimeZoneInfo.ConvertTimeFromUtc(e.End, ComboHelper.GetTimeZone()),
                         Description = e.Description,
                         IsFullDay = e.IsFullDay,
                         ThemeColor = e.ThemeColor,

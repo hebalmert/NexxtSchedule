@@ -46,15 +46,15 @@ namespace NexxtSchedule.Models
         public string Description { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{MM/DD/YYYY HH:mm A}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.DateTime)]
+        //[DisplayFormat(DataFormatString = "{0: MM/DD/YYYY HH:mm -03:00}", ApplyFormatInEditMode = true)]
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_DateStart")]
         public DateTime Start { get; set; }
 
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{MM/DD/YYYY HH:mm A}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.DateTime)]
+        //[DisplayFormat(DataFormatString = "{0: MM/DD/YYYY HH:mm -03:00}", ApplyFormatInEditMode = true)]
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_DateEnd")]
-        public DateTime? End { get; set; }
+        public DateTime End { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [MaxLength(25, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
