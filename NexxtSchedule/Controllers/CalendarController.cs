@@ -56,6 +56,10 @@ namespace NexxtSchedule.Controllers
                     var v = db.Events.Where(a => a.EventId == e.EventId).FirstOrDefault();
                     if (v != null)
                     {
+                        if (e.End == null)
+                        {
+                            e.End = e.Start;
+                        }
                         v.CompanyId = user.CompanyId;
                         v.ProfessionalId = e.ProfessionalId;
                         v.Profesional = profesionales.FullName;
@@ -63,7 +67,7 @@ namespace NexxtSchedule.Controllers
                         v.Cliente = clientes.Cliente;
                         v.Subject = e.Subject;
                         v.Start = TimeZoneInfo.ConvertTimeFromUtc(e.Start, ComboHelper.GetTimeZone());
-                        v.End = TimeZoneInfo.ConvertTimeFromUtc(e.End, ComboHelper.GetTimeZone());
+                        v.End = TimeZoneInfo.ConvertTimeFromUtc(Convert.ToDateTime(e.End),ComboHelper.GetTimeZone());
                         v.Description = e.Description;
                         v.IsFullDay = e.IsFullDay;
                         v.ThemeColor = e.ThemeColor;
@@ -79,7 +83,6 @@ namespace NexxtSchedule.Controllers
                     //DateTime date1 = e.Start;
                     //TimeZoneInfo tz = TimeZoneInfo.CreateCustomTimeZone("COLOMBIA", new TimeSpan(-3, 0, 0), "Colombia", "Colombia");
                     //DateTime custDateTime1 = TimeZoneInfo.ConvertTimeFromUtc(date1, tz);
-
                     var nuevoEvento = new Event
                     {
                         CompanyId = user.CompanyId,
@@ -88,8 +91,8 @@ namespace NexxtSchedule.Controllers
                         ClientId = e.ClientId,
                         Cliente = clientes.Cliente,
                         Subject = e.Subject,
-                        Start = TimeZoneInfo.ConvertTimeFromUtc(e.Start, ComboHelper.GetTimeZone()),
-                        End = TimeZoneInfo.ConvertTimeFromUtc(e.End, ComboHelper.GetTimeZone()),
+                        Start =e.Start,
+                        End = e.End,
                         Description = e.Description,
                         IsFullDay = e.IsFullDay,
                         ThemeColor = e.ThemeColor,

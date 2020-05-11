@@ -120,7 +120,7 @@ namespace NexxtSchedule.Classes
 
         public static TimeZoneInfo GetTimeZone()
         {
-            TimeZoneInfo tz = TimeZoneInfo.CreateCustomTimeZone("COLOMBIA", new TimeSpan(-3, 0, 0), "Colombia", "Colombia");
+            TimeZoneInfo tz = TimeZoneInfo.CreateCustomTimeZone("COLOMBIA", new TimeSpan(-5, 0, 0), "Colombia", "Colombia");
 
             return tz;
         }
