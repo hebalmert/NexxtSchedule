@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="@Html.HiddenFor(model =&gt; model.CompanyId)" xml:space="preserve">
+    <value>Add Item</value>
+  </data>
   <data name="ButtonBack" xml:space="preserve">
     <value>Back</value>
   </data>
@@ -153,9 +156,6 @@
   <data name="ButtonSearch" xml:space="preserve">
     <value>Buscar</value>
   </data>
-  <data name="Button_Add" xml:space="preserve">
-    <value>Add Item</value>
-  </data>
   <data name="Client_IndeView_titulo1" xml:space="preserve">
     <value>Clients</value>
   </data>
@@ -185,6 +185,9 @@
   </data>
   <data name="Client_Model_UserName" xml:space="preserve">
     <value>E-mail</value>
+  </data>
+  <data name="Color_Model_ColorDate" xml:space="preserve">
+    <value>Color</value>
   </data>
   <data name="ComboSelect" xml:space="preserve">
     <value>[Select Item...]</value>
@@ -324,6 +327,9 @@
   <data name="DirectPayment_Model_Total" xml:space="preserve">
     <value>Total</value>
   </data>
+  <data name="Event_Model_Asistencia" xml:space="preserve">
+    <value>Assistance</value>
+  </data>
   <data name="Event_Model_Cliente" xml:space="preserve">
     <value>Client</value>
   </data>
@@ -333,9 +339,6 @@
   <data name="Event_Model_Compania" xml:space="preserve">
     <value>Company</value>
   </data>
-  <data name="Event_Model_DateEnd" xml:space="preserve">
-    <value>End</value>
-  </data>
   <data name="Event_Model_DateStart" xml:space="preserve">
     <value>Start</value>
   </data>
@@ -344,6 +347,9 @@
   </data>
   <data name="Event_Model_FullDay" xml:space="preserve">
     <value>Full Day</value>
+  </data>
+  <data name="Event_Model_Hora" xml:space="preserve">
+    <value>Time</value>
   </data>
   <data name="Event_Model_Motivo" xml:space="preserve">
     <value>Subject</value>
@@ -362,6 +368,9 @@
   </data>
   <data name="HeadText_Model_Texto" xml:space="preserve">
     <value>Header Text</value>
+  </data>
+  <data name="Hora_Model_Horas" xml:space="preserve">
+    <value>Time</value>
   </data>
   <data name="Identification_IndexView_Titulo1" xml:space="preserve">
     <value>Tipo Documento</value>

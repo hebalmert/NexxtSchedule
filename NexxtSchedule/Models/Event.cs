@@ -46,28 +46,32 @@ namespace NexxtSchedule.Models
         public string Description { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
-        [DataType(DataType.DateTime)]
-        //[DisplayFormat(DataFormatString = "{0: MM/DD/YYYY HH:mm -03:00}", ApplyFormatInEditMode = true)]
+        //[DataType(DataType.Date)]
+        ////[DisplayFormat(DataFormatString = "{0: MM/DD/YYYY}", ApplyFormatInEditMode = true)]
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_DateStart")]
         public DateTime Start { get; set; }
 
-        [DataType(DataType.DateTime)]
-        //[DisplayFormat(DataFormatString = "{0: MM/DD/YYYY HH:mm -03:00}", ApplyFormatInEditMode = true)]
-        [Display(ResourceType = typeof(Resource), Name = "Event_Model_DateEnd")]
-        public DateTime? End { get; set; }
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
+        [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
+        [Display(ResourceType = typeof(Resource), Name = "Event_Model_Hora")]
+        public int HourId { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
-        [MaxLength(25, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
+        [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_Color")]
-        public string ThemeColor { get; set; }
+        public int ColorId { get; set; }
 
-        [Display(ResourceType = typeof(Resource), Name = "Event_Model_FullDay")]
-        public bool IsFullDay { get; set; }
+        [Display(ResourceType = typeof(Resource), Name = "Event_Model_Asistencia")]
+        public bool Asistencia { get; set; }
 
         public virtual Company Company { get; set; }
 
         public virtual Professional Professional { get; set; }
 
         public virtual Client Client { get; set; }
+
+        public virtual Color Color { get; set; }
+
+        public virtual Hour Hour { get; set; }
     }
 }

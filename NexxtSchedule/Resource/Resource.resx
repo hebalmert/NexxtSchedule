@@ -186,6 +186,9 @@
   <data name="Client_Model_UserName" xml:space="preserve">
     <value>Correo</value>
   </data>
+  <data name="Color_Model_ColorDate" xml:space="preserve">
+    <value>Color</value>
+  </data>
   <data name="ComboSelect" xml:space="preserve">
     <value>[Seleccione Item...]</value>
   </data>
@@ -324,6 +327,9 @@
   <data name="DirectPayment_Model_Total" xml:space="preserve">
     <value>Total</value>
   </data>
+  <data name="Event_Model_Asistencia" xml:space="preserve">
+    <value>Asistencia</value>
+  </data>
   <data name="Event_Model_Cliente" xml:space="preserve">
     <value>Cliente</value>
   </data>
@@ -333,9 +339,6 @@
   <data name="Event_Model_Compania" xml:space="preserve">
     <value>Compañia</value>
   </data>
-  <data name="Event_Model_DateEnd" xml:space="preserve">
-    <value>Fin</value>
-  </data>
   <data name="Event_Model_DateStart" xml:space="preserve">
     <value>Inicio</value>
   </data>
@@ -344,6 +347,9 @@
   </data>
   <data name="Event_Model_FullDay" xml:space="preserve">
     <value>Dia Completo</value>
+  </data>
+  <data name="Event_Model_Hora" xml:space="preserve">
+    <value>Hora</value>
   </data>
   <data name="Event_Model_Motivo" xml:space="preserve">
     <value>Motivo</value>
@@ -362,6 +368,9 @@
   </data>
   <data name="HeadText_Model_Texto" xml:space="preserve">
     <value>Texto Encabezado</value>
+  </data>
+  <data name="Hora_Model_Horas" xml:space="preserve">
+    <value>Hora</value>
   </data>
   <data name="Identification_IndexView_Titulo1" xml:space="preserve">
     <value>Tipo Documento</value>

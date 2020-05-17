@@ -11,30 +11,6 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Client.Cliente)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Client.Cliente)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Company.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Company.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Professional.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Professional.FirstName)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Profesional)
         </dt>
 
@@ -43,11 +19,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Cliente)
+            @Html.DisplayNameFor(model => model.Client.Cliente)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Cliente)
+            @Html.DisplayFor(model => model.Client.Cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Start)
+        </dt>
+
+        <dd>
+            @Convert.ToString(string.Format("{0:dd/MM/yyyy}", Model.Start))
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hour.Hora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hour.Hora)
         </dd>
 
         <dt>
@@ -64,38 +56,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Start)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Start)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.End)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.End)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ThemeColor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ThemeColor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsFullDay)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsFullDay)
         </dd>
 
     </dl>

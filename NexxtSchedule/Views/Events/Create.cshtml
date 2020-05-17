@@ -7,6 +7,7 @@
 <h2> @Resources.Resource.ViewCreate</h2>
 
 
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -16,20 +17,21 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.CompanyId)
+    @Html.HiddenFor(model => model.ClientId)
 
     <div class="form-group">
-        @Html.LabelFor(model => model.ProfessionalId, "ProfessionalId", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Cliente, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("ProfessionalId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.ProfessionalId, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Cliente, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Cliente, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.ClientId, "ClientId", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ProfessionalId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("ClientId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.ClientId, "", new { @class = "text-danger" })
+            @Html.DropDownList("ProfessionalId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ProfessionalId, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -63,45 +65,18 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.IsFullDay, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.HourId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.IsFullDay)
-                @Html.ValidationMessageFor(model => model.IsFullDay, "", new { @class = "text-danger" })
-            </div>
+            @Html.DropDownList("HourId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.HourId, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <div class="form-group" id="divEndDate">
-        @Html.LabelFor(model => model.End, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class='input-group date' id='End' style="width:280px">
-                @Html.EditorFor(model => model.End, new { htmlAttributes = new { @class = "form-control" } })
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>
-            @Html.ValidationMessageFor(model => model.End, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    @*<div class="form-group">
-        @Html.LabelFor(model => model.ThemeColor, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ThemeColor, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ThemeColor, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
     <div class="form-group">
-        @Html.LabelFor(model => model.ThemeColor, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ColorId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <select id="ThemeColor" class="form-control">
-                <option value="">Default</option>
-                <option value="red">Red</option>
-                <option value="blue">Blue</option>
-                <option value="black">Black</option>
-                <option value="green">Green</option>
-            </select>
-            @Html.ValidationMessageFor(model => model.ThemeColor, "", new { @class = "text-danger" })
+            @Html.DropDownList("ColorId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ColorId, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -122,22 +97,9 @@
     @Scripts.Render("~/bundles/jqueryval")
     
 <script>
-    $('#Start,#End').datetimepicker({
-        format: 'MM/DD/YYYY hh:mm A'
+    $('#Start').datetimepicker({
+        format: 'MM/DD/YYYY'
     });
 </script>
 
-<script>
-    $('#IsFullDay').change(function ()
-    {
-        if ($(this).is(':checked'))
-        {
-            $('#divEndDate').hide();
-        }
-        else
-        {
-            $('#divEndDate').show();
-        }
-    });
-</script>
 }

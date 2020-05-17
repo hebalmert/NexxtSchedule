@@ -118,11 +118,45 @@ namespace NexxtSchedule.Classes
             return levelprice.OrderBy(d => d.NivelPrecio).ToList();
         }
 
-        public static TimeZoneInfo GetTimeZone()
+        //Combos de impuestos
+        public static List<Color> GetColor()
         {
-            TimeZoneInfo tz = TimeZoneInfo.CreateCustomTimeZone("COLOMBIA", new TimeSpan(-5, 0, 0), "Colombia", "Colombia");
+            var colores = db.Colors.ToList();
+            colores.Add(new Color
+            {
+                ColorId = 0,
+                ColorDate = @Resources.Resource.ComboSelect,
+            });
+            return colores.OrderBy(d => d.ColorDate).ToList();
+        }
 
-            return tz;
+        //Combos de impuestos
+        public static List<Hour> GetHora()
+        {
+            var horas = db.Hours.ToList();
+            horas.Add(new Hour
+            {
+                HourId = 0,
+                Hora = @Resources.Resource.ComboSelect,
+            });
+            return horas.OrderBy(d => d.Hora).ToList();
+        }
+
+        public static TimeZoneInfo GetTimeZone(int idcompany)
+        {
+            var pais = db.Companies.Find(idcompany);
+
+            if (pais.CountryId == 2)
+            {
+                TimeZoneInfo tz = TimeZoneInfo.CreateCustomTimeZone("COLOMBIA", new TimeSpan(-2, 0, 0), "Colombia", "Colombia");
+                return tz;
+            }
+           else
+            {
+                //pais.countryId == 1 es Venezuela
+                TimeZoneInfo tz = TimeZoneInfo.CreateCustomTimeZone("VENEZUELA", new TimeSpan(-3, 0, 0), "Venezuela", "Venezuela");
+                return tz;
+            }
         }
 
 

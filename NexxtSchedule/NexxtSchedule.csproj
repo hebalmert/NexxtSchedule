@@ -190,6 +190,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\ColorsController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\DirectGeneralsController.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HeadTextsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HoursController.cs" />
     <Compile Include="Controllers\IdentificationsController.cs" />
     <Compile Include="Controllers\LevelPricesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -214,12 +216,14 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Color.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\DirectGeneral.cs" />
     <Compile Include="Models\DirectPayment.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\HeadText.cs" />
+    <Compile Include="Models\Hour.cs" />
     <Compile Include="Models\Identification.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LevelPrice.cs" />
@@ -253,6 +257,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\JquerySearch\jquery-1.12.4.js" />
+    <Content Include="Content\JquerySearch\jquery-ui.css" />
+    <Content Include="Content\JquerySearch\jquery-ui.js" />
+    <Content Include="Content\JquerySearch\jQuery.print.js" />
+    <Content Include="Content\JquerySearch\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -477,6 +486,16 @@
     <Content Include="Views\Outcomes\AddItems.cshtml" />
     <Content Include="Views\Outcomes\PrintOutComeReport.cshtml" />
     <Content Include="Views\Outcomes\PrintReport.cshtml" />
+    <Content Include="Views\Colors\Create.cshtml" />
+    <Content Include="Views\Colors\Delete.cshtml" />
+    <Content Include="Views\Colors\Details.cshtml" />
+    <Content Include="Views\Colors\Edit.cshtml" />
+    <Content Include="Views\Colors\Index.cshtml" />
+    <Content Include="Views\Hours\Create.cshtml" />
+    <Content Include="Views\Hours\Delete.cshtml" />
+    <Content Include="Views\Hours\Details.cshtml" />
+    <Content Include="Views\Hours\Edit.cshtml" />
+    <Content Include="Views\Hours\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

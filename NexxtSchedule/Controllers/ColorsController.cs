@@ -12,49 +12,49 @@ namespace NexxtSchedule.Controllers
 {
     [Authorize(Roles = "Admin")]
 
-    public class CountriesController : Controller
+    public class ColorsController : Controller
     {
         private NexxtCalContext db = new NexxtCalContext();
 
-        // GET: Countries
+        // GET: Colors
         public ActionResult Index()
         {
-            return View(db.Countries.ToList());
+            return View(db.Colors.ToList());
         }
 
-        // GET: Countries/Details/5
+        // GET: Colors/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var country = db.Countries.Find(id);
-            if (country == null)
+            var color = db.Colors.Find(id);
+            if (color == null)
             {
                 return HttpNotFound();
             }
-            return View(country);
+            return View(color);
         }
 
-        // GET: Countries/Create
+        // GET: Colors/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Countries/Create
+        // POST: Colors/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CountryId,Pais")] Country country)
+        public ActionResult Create([Bind(Include = "ColorId,ColorDate")] Color color)
         {
             if (ModelState.IsValid)
             {
-                db.Countries.Add(country);
                 try
                 {
+                    db.Colors.Add(color);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -73,36 +73,36 @@ namespace NexxtSchedule.Controllers
                 }
             }
 
-            return View(country);
+            return View(color);
         }
 
-        // GET: Countries/Edit/5
+        // GET: Colors/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = db.Countries.Find(id);
-            if (country == null)
+            var color = db.Colors.Find(id);
+            if (color == null)
             {
                 return HttpNotFound();
             }
-            return View(country);
+            return View(color);
         }
 
-        // POST: Countries/Edit/5
+        // POST: Colors/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CountryId,Pais")] Country country)
+        public ActionResult Edit([Bind(Include = "ColorId,ColorDate")] Color color)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(country).State = EntityState.Modified;
                 try
                 {
+                    db.Entry(color).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -120,33 +120,33 @@ namespace NexxtSchedule.Controllers
                     }
                 }
             }
-            return View(country);
+            return View(color);
         }
 
-        // GET: Countries/Delete/5
+        // GET: Colors/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = db.Countries.Find(id);
-            if (country == null)
+            Color color = db.Colors.Find(id);
+            if (color == null)
             {
                 return HttpNotFound();
             }
-            return View(country);
+            return View(color);
         }
 
-        // POST: Countries/Delete/5
+        // POST: Colors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Country country = db.Countries.Find(id);
-            db.Countries.Remove(country);
+            var color = db.Colors.Find(id);
             try
             {
+                db.Colors.Remove(color);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -163,7 +163,7 @@ namespace NexxtSchedule.Controllers
                     ModelState.AddModelError(string.Empty, ex.Message);
                 }
             }
-            return View(country);
+            return View(color);
         }
 
         protected override void Dispose(bool disposing)

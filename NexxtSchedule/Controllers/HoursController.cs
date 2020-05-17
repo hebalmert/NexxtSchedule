@@ -12,49 +12,49 @@ namespace NexxtSchedule.Controllers
 {
     [Authorize(Roles = "Admin")]
 
-    public class CountriesController : Controller
+    public class HoursController : Controller
     {
         private NexxtCalContext db = new NexxtCalContext();
 
-        // GET: Countries
+        // GET: Hours
         public ActionResult Index()
         {
-            return View(db.Countries.ToList());
+            return View(db.Hours.ToList());
         }
 
-        // GET: Countries/Details/5
+        // GET: Hours/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var country = db.Countries.Find(id);
-            if (country == null)
+            var hour = db.Hours.Find(id);
+            if (hour == null)
             {
                 return HttpNotFound();
             }
-            return View(country);
+            return View(hour);
         }
 
-        // GET: Countries/Create
+        // GET: Hours/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Countries/Create
+        // POST: Hours/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CountryId,Pais")] Country country)
+        public ActionResult Create([Bind(Include = "HourId,Hora")] Hour hour)
         {
             if (ModelState.IsValid)
             {
-                db.Countries.Add(country);
                 try
                 {
+                    db.Hours.Add(hour);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -73,36 +73,36 @@ namespace NexxtSchedule.Controllers
                 }
             }
 
-            return View(country);
+            return View(hour);
         }
 
-        // GET: Countries/Edit/5
+        // GET: Hours/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = db.Countries.Find(id);
-            if (country == null)
+            var hour = db.Hours.Find(id);
+            if (hour == null)
             {
                 return HttpNotFound();
             }
-            return View(country);
+            return View(hour);
         }
 
-        // POST: Countries/Edit/5
+        // POST: Hours/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CountryId,Pais")] Country country)
+        public ActionResult Edit([Bind(Include = "HourId,Hora")] Hour hour)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(country).State = EntityState.Modified;
                 try
                 {
+                    db.Entry(hour).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -120,33 +120,33 @@ namespace NexxtSchedule.Controllers
                     }
                 }
             }
-            return View(country);
+            return View(hour);
         }
 
-        // GET: Countries/Delete/5
+        // GET: Hours/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = db.Countries.Find(id);
-            if (country == null)
+            var hour = db.Hours.Find(id);
+            if (hour == null)
             {
                 return HttpNotFound();
             }
-            return View(country);
+            return View(hour);
         }
 
-        // POST: Countries/Delete/5
+        // POST: Hours/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Country country = db.Countries.Find(id);
-            db.Countries.Remove(country);
+            var hour = db.Hours.Find(id);
             try
             {
+                db.Hours.Remove(hour);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -163,7 +163,7 @@ namespace NexxtSchedule.Controllers
                     ModelState.AddModelError(string.Empty, ex.Message);
                 }
             }
-            return View(country);
+            return View(hour);
         }
 
         protected override void Dispose(bool disposing)

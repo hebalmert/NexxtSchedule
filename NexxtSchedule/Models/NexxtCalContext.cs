@@ -54,5 +54,9 @@ namespace NexxtSchedule.Models
         public System.Data.Entity.DbSet<NexxtSchedule.Models.Outcome> Outcomes { get; set; }
 
         public System.Data.Entity.DbSet<NexxtSchedule.Models.OutcomeDetail> OutcomeDetails { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSchedule.Models.Color> Colors { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSchedule.Models.Hour> Hours { get; set; }
     }
 }

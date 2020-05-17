@@ -56,21 +56,23 @@ namespace NexxtSchedule.Controllers
                     var v = db.Events.Where(a => a.EventId == e.EventId).FirstOrDefault();
                     if (v != null)
                     {
-                        if (e.End == null)
-                        {
-                            e.End = e.Start;
-                        }
+                        //if (e.End == null)
+                        //{
+                        //    e.End = e.Start;
+                        //}
                         v.CompanyId = user.CompanyId;
                         v.ProfessionalId = e.ProfessionalId;
                         v.Profesional = profesionales.FullName;
                         v.ClientId = e.ClientId;
                         v.Cliente = clientes.Cliente;
                         v.Subject = e.Subject;
-                        v.Start = TimeZoneInfo.ConvertTimeFromUtc(e.Start, ComboHelper.GetTimeZone());
-                        v.End = TimeZoneInfo.ConvertTimeFromUtc(Convert.ToDateTime(e.End),ComboHelper.GetTimeZone());
-                        v.Description = e.Description;
-                        v.IsFullDay = e.IsFullDay;
-                        v.ThemeColor = e.ThemeColor;
+                        //v.Start = e.Start;
+                        //v.End = e.End;
+                        //v.Start = TimeZoneInfo.ConvertTimeFromUtc(e.Start, ComboHelper.GetTimeZone(user.CompanyId));
+                        //v.End = TimeZoneInfo.ConvertTimeFromUtc(Convert.ToDateTime(e.End), ComboHelper.GetTimeZone(user.CompanyId));
+                        //v.Description = e.Description;
+                        //v.IsFullDay = e.IsFullDay;
+                        //v.ThemeColor = e.ThemeColor;
                     }
                     db2.Dispose();
                 }
@@ -91,11 +93,13 @@ namespace NexxtSchedule.Controllers
                         ClientId = e.ClientId,
                         Cliente = clientes.Cliente,
                         Subject = e.Subject,
-                        Start =e.Start,
-                        End = e.End,
-                        Description = e.Description,
-                        IsFullDay = e.IsFullDay,
-                        ThemeColor = e.ThemeColor,
+                        //Start = e.Start,
+                        //End = e.End,
+                        //Start = TimeZoneInfo.ConvertTimeFromUtc(e.Start, ComboHelper.GetTimeZone(user.CompanyId)),
+                        //End = TimeZoneInfo.ConvertTimeFromUtc(Convert.ToDateTime(e.End), ComboHelper.GetTimeZone(user.CompanyId)),
+                        //Description = e.Description,
+                        //IsFullDay = e.IsFullDay,
+                        //ThemeColor = e.ThemeColor,
                     };
                     db2.Dispose();
                     db.Events.Add(nuevoEvento);

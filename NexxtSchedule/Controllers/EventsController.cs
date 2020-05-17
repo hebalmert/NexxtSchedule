@@ -17,8 +17,67 @@ namespace NexxtSchedule.Controllers
     {
         private NexxtCalContext db = new NexxtCalContext();
 
+
+        // GET: Events/Delete/5
+        public ActionResult Asistio(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var evento = db.Events.Find(id);
+            if (evento == null)
+            {
+                return HttpNotFound();
+            }
+            evento.Asistencia = true;
+            db.Entry(evento).State = EntityState.Modified;
+            db.SaveChanges();
+
+            var fe = Convert.ToString(evento.Start);
+
+            return RedirectToAction("Index", new { fecha = fe, profesionalid = evento.ProfessionalId });
+        }
+
+        [HttpPost]
+        public JsonResult Search2(string Prefix2)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+
+            var profesionales = (from profe in db.Professionals
+                            where profe.FullName.StartsWith(Prefix2) && profe.CompanyId == user.CompanyId
+                            select new
+                            {
+                                label = profe.FullName,
+                                val = profe.ProfessionalId
+                            }).ToList();
+
+            return Json(profesionales);
+
+        }
+
+        [HttpPost]
+        public JsonResult Search(string Prefix)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+
+            var clientes = (from client in db.Clients
+                               where client.Cliente.StartsWith(Prefix) && client.CompanyId == user.CompanyId
+                               select new
+                               {
+                                   label = client.Cliente,
+                                   val = client.ClientId
+                               }).ToList();
+
+            return Json(clientes);
+
+        }
+
         // GET: Events
-        public ActionResult Index()
+        public ActionResult Index(string fecha, int? profesionalid)
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
@@ -26,10 +85,26 @@ namespace NexxtSchedule.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            var events = db.Events.Where(c => c.CompanyId == user.CompanyId)
-                .Include(e => e.Client)
-                .Include(e => e.Professional);
-            return View(events.ToList());
+            if (!string.IsNullOrEmpty(fecha) && profesionalid != 0 && profesionalid != null)
+            {
+                DateTime dia =Convert.ToDateTime(fecha);
+
+                var eventos = db.Events.Where(c => c.CompanyId == user.CompanyId && c.Start == dia && c.ProfessionalId == profesionalid)
+                    .Include(e => e.Client)
+                    .Include(e=> e.Hour)
+                    .Include(e=> e.Color)
+                    .Include(e => e.Professional);
+                     return View(eventos.OrderBy(o=> o.Hour.Hora).ToList());
+            }
+            else
+            {
+                var eventos = db.Events.Where(c => c.CompanyId == user.CompanyId && c.ProfessionalId == 0)
+                    .Include(e => e.Client)
+                    .Include(e => e.Hour)
+                    .Include(e => e.Color)
+                    .Include(e => e.Professional);
+                return View(eventos.OrderBy(o => o.Hour.Hora).ToList());
+            }
         }
 
         // GET: Events/Details/5
@@ -48,22 +123,31 @@ namespace NexxtSchedule.Controllers
         }
 
         // GET: Events/Create
-        public ActionResult Create()
+        public ActionResult Create(int clienteId)
         {
+            if (clienteId == 0)
+            {
+                return RedirectToAction("Index");
+            }
+
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
             {
                 return RedirectToAction("Index", "Home");
             }
+            var nombrecliente = db.Clients.Find(clienteId);
+
             var evento = new Event
             {
                 CompanyId = user.CompanyId,
+                ClientId = clienteId,
+                Cliente = nombrecliente.Cliente,
                 Start = DateTime.Today,
-                End = DateTime.Today
             };
 
-            ViewBag.ClientId = new SelectList(ComboHelper.GetClients(user.CompanyId), "ClientId", "Cliente");
-            ViewBag.ProfessionalId = new SelectList(ComboHelper.GetProfessional(user.CompanyId), "FullName", "FullName");
+            ViewBag.ProfessionalId = new SelectList(ComboHelper.GetProfessional(user.CompanyId), "ProfessionalId", "FullName");
+            ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora");
+            ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate");
 
             return View(evento);
         }
@@ -75,13 +159,20 @@ namespace NexxtSchedule.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Event evento)
         {
+            var profesionales = db.Professionals.Find(evento.ProfessionalId);
+            evento.Profesional = profesionales.FullName;
+
             if (ModelState.IsValid)
             {
+               
                 db.Events.Add(evento);
+
                 try
                 {
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    var fe = Convert.ToString(evento.Start);
+
+                    return RedirectToAction("Index", new { fecha = fe, profesionalid  = evento.ProfessionalId});
                 }
                 catch (Exception ex)
                 {
@@ -98,9 +189,9 @@ namespace NexxtSchedule.Controllers
                 }
             }
 
-            ViewBag.ClientId = new SelectList(ComboHelper.GetClients(evento.CompanyId), "ClientId", "Cliente", evento.ClientId);
             ViewBag.ProfessionalId = new SelectList(ComboHelper.GetProfessional(evento.CompanyId), "ProfessionalId", "FullName", evento.ProfessionalId);
-
+            ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora");
+            ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate");
             return View(evento);
         }
 
@@ -117,8 +208,9 @@ namespace NexxtSchedule.Controllers
                 return HttpNotFound();
             }
 
-            ViewBag.ClientId = new SelectList(ComboHelper.GetClients(evento.CompanyId), "ClientId", "Cliente", evento.ClientId);
             ViewBag.ProfessionalId = new SelectList(ComboHelper.GetProfessional(evento.CompanyId), "ProfessionalId", "FullName", evento.ProfessionalId);
+            ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora", evento.HourId);
+            ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate", evento.ColorId);
 
             return View(evento);
         }
@@ -130,13 +222,19 @@ namespace NexxtSchedule.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Event evento)
         {
+            var profesionales = db.Professionals.Find(evento.ProfessionalId);
+            evento.Profesional = profesionales.FullName;
+
             if (ModelState.IsValid)
             {
                 db.Entry(evento).State = EntityState.Modified;
                 try
                 {
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+
+                    var fe = Convert.ToString(evento.Start);
+
+                    return RedirectToAction("Index", new { fecha = fe, profesionalid = evento.ProfessionalId });
                 }
                 catch (Exception ex)
                 {
@@ -153,8 +251,9 @@ namespace NexxtSchedule.Controllers
                 }
             }
 
-            ViewBag.ClientId = new SelectList(ComboHelper.GetClients(evento.CompanyId), "ClientId", "Cliente", evento.ClientId);
             ViewBag.ProfessionalId = new SelectList(ComboHelper.GetProfessional(evento.CompanyId), "ProfessionalId", "FullName", evento.ProfessionalId);
+            ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora", evento.HourId);
+            ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate", evento.ColorId);
 
             return View(evento);
         }
