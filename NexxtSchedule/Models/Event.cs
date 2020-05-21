@@ -46,8 +46,8 @@ namespace NexxtSchedule.Models
         public string Description { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
-        //[DataType(DataType.Date)]
-        ////[DisplayFormat(DataFormatString = "{0: MM/DD/YYYY}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_DateStart")]
         public DateTime Start { get; set; }
 

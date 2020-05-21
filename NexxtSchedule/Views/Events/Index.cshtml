@@ -20,7 +20,7 @@
                         <div class="col-md-5 mb-3">
                             <label>Start</label>
                             <div class="input-group date" style="width:150px">
-                                <input type="text" id="txtStart2" name="fecha" class="form-control" placeholder="Fecha" />
+                                <input type="date" name="fecha" id="txtStart2" class="form-control" placeholder="Date" />
                                 <span class="input-group-addon datepicker-decades">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -248,7 +248,7 @@
     </table>
 </div>
 
-<link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+@*<link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />*@
 <link href="~/Content/JquerySearch/jquery-ui.css" rel="stylesheet" />
 
 
@@ -257,13 +257,13 @@
 
     <script src="~/Content/JquerySearch/jquery-1.12.4.js"></script>
     <script src="~/Content/JquerySearch/jquery-ui.js"></script>
-    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+    @*<script src="~/Scripts/bootstrap-datetimepicker.js"></script>*@
 
-    <script>
+    @*<script>
         $('#txtStart, #txtStart2').datetimepicker({
-            format: 'MM/DD/YYYY'
+            format: 'DD/MM/YYYY'
         });
-    </script>
+    </script>*@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#txt_search").autocomplete({

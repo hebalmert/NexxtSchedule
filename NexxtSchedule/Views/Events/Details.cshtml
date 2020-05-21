@@ -61,7 +61,7 @@
     </dl>
 </div>
 <p>
-    <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
+    <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new { fecha = Model.Start, profesionalid = Model.ProfessionalId})'">
         <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
     </button>
     <button type="button" class="btn btn-info btn-sm" onclick="location.href ='@Url.Action("Edit", new { id = Model.EventId})'">

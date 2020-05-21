@@ -77,7 +77,7 @@ namespace NexxtSchedule.Controllers
         }
 
         // GET: Events
-        public ActionResult Index(string fecha, int? profesionalid)
+        public ActionResult Index(DateTime? fecha, int? profesionalid)
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
@@ -85,11 +85,11 @@ namespace NexxtSchedule.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            if (!string.IsNullOrEmpty(fecha) && profesionalid != 0 && profesionalid != null)
+            if (fecha != null && profesionalid != 0 && profesionalid != null)
             {
-                DateTime dia =Convert.ToDateTime(fecha);
+                //DateTime dia =Convert.ToDateTime(fecha);
 
-                var eventos = db.Events.Where(c => c.CompanyId == user.CompanyId && c.Start == dia && c.ProfessionalId == profesionalid)
+                var eventos = db.Events.Where(c => c.CompanyId == user.CompanyId && c.Start == fecha && c.ProfessionalId == profesionalid)
                     .Include(e => e.Client)
                     .Include(e=> e.Hour)
                     .Include(e=> e.Color)
@@ -123,7 +123,7 @@ namespace NexxtSchedule.Controllers
         }
 
         // GET: Events/Create
-        public ActionResult Create(int clienteId)
+        public ActionResult Create(int? clienteId)
         {
             if (clienteId == 0)
             {
@@ -140,7 +140,7 @@ namespace NexxtSchedule.Controllers
             var evento = new Event
             {
                 CompanyId = user.CompanyId,
-                ClientId = clienteId,
+                ClientId = nombrecliente.ClientId,
                 Cliente = nombrecliente.Cliente,
                 Start = DateTime.Today,
             };
@@ -170,9 +170,8 @@ namespace NexxtSchedule.Controllers
                 try
                 {
                     db.SaveChanges();
-                    var fe = Convert.ToString(evento.Start);
 
-                    return RedirectToAction("Index", new { fecha = fe, profesionalid  = evento.ProfessionalId});
+                    return RedirectToAction("Index", new { fecha = evento.Start, profesionalid  = evento.ProfessionalId});
                 }
                 catch (Exception ex)
                 {
@@ -190,8 +189,8 @@ namespace NexxtSchedule.Controllers
             }
 
             ViewBag.ProfessionalId = new SelectList(ComboHelper.GetProfessional(evento.CompanyId), "ProfessionalId", "FullName", evento.ProfessionalId);
-            ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora");
-            ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate");
+            ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora", evento.HourId);
+            ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate", evento.ColorId);
             return View(evento);
         }
 
@@ -232,9 +231,7 @@ namespace NexxtSchedule.Controllers
                 {
                     db.SaveChanges();
 
-                    var fe = Convert.ToString(evento.Start);
-
-                    return RedirectToAction("Index", new { fecha = fe, profesionalid = evento.ProfessionalId });
+                    return RedirectToAction("Index", new { fecha = evento.Start, profesionalid = evento.ProfessionalId });
                 }
                 catch (Exception ex)
                 {

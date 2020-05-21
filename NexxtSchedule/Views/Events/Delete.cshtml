@@ -65,7 +65,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
+            <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new { fecha = Model.Start, profesionalid = Model.ProfessionalId})'">
                 <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
             </button>
             <button type="submit" class="btn btn-danger btn-sm">
