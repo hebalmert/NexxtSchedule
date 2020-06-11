@@ -168,11 +168,17 @@
   <data name="Client_Model_Compania" xml:space="preserve">
     <value>Company</value>
   </data>
+  <data name="Client_Model_LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
   <data name="Client_Model_Movil" xml:space="preserve">
     <value>Movil</value>
   </data>
   <data name="Client_Model_Nacimiento" xml:space="preserve">
     <value>Birth Date</value>
+  </data>
+  <data name="Client_Model_Name" xml:space="preserve">
+    <value>Name</value>
   </data>
   <data name="Client_Model_NumeroDocu" xml:space="preserve">
     <value>Document Number</value>
@@ -368,6 +374,9 @@
   </data>
   <data name="HeadText_Model_Texto" xml:space="preserve">
     <value>Header Text</value>
+  </data>
+  <data name="Hora_Model_HoraOrden" xml:space="preserve">
+    <value>Index</value>
   </data>
   <data name="Hora_Model_Horas" xml:space="preserve">
     <value>Time</value>

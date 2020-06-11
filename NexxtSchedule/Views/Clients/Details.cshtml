@@ -1,22 +1,37 @@
 ﻿@model NexxtSchedule.Models.Client
 
 @{
-    ViewBag.Title = @Resources.Resource.ViewDelete;
+    ViewBag.Title = @Resources.Resource.ViewDetail;
 }
 
-    <h2>@Resources.Resource.ViewDelete</h2>
+    <h2>@Resources.Resource.ViewDetail</h2>
 
 <div>
     <h4>@Resources.Resource.Client_IndeView_titulo1</h4>
     <hr />
     <dl class="dl-horizontal">
-
         <dt>
             @Html.DisplayNameFor(model => model.Cliente)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
         </dd>
 
         <dt>

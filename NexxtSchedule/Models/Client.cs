@@ -26,12 +26,12 @@ namespace NexxtSchedule.Models
 
         //[Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [MaxLength(50, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
-        [Display(ResourceType = typeof(Resource), Name = "Client_Model_Cliente")]
+        [Display(ResourceType = typeof(Resource), Name = "Client_Model_Name")]
         public string FirstName { get; set; }
 
         //[Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [MaxLength(50, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
-        [Display(ResourceType = typeof(Resource), Name = "Client_Model_Cliente")]
+        [Display(ResourceType = typeof(Resource), Name = "Client_Model_LastName")]
         public string LastName { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]

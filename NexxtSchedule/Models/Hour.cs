@@ -19,6 +19,10 @@ namespace NexxtSchedule.Models
         [Index("Company_Hora_Index", IsUnique = true)]
         public string Hora { get; set; }
 
+        [MaxLength(10, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
+        [Display(ResourceType = typeof(Resource), Name = "Hora_Model_HoraOrden")]
+        public string Orden { get; set; }
+
         public virtual ICollection<Event> Events { get; set; }
     }
 }

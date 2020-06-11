@@ -48,7 +48,7 @@ namespace NexxtSchedule.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "HourId,Hora")] Hour hour)
+        public ActionResult Create(Hour hour)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace NexxtSchedule.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HourId,Hora")] Hour hour)
+        public ActionResult Edit(Hour hour)
         {
             if (ModelState.IsValid)
             {

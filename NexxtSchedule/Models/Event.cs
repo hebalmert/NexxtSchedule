@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -12,11 +13,13 @@ namespace NexxtSchedule.Models
         [Key]
         public int EventId { get; set; }
 
+        [Index("Event_Company_ProfesionalId_Star_HourId_Index", 1, IsUnique = true)]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_Compania")]
         public int CompanyId { get; set; }
 
+        [Index("Event_Company_ProfesionalId_Star_HourId_Index", 2, IsUnique = true)]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_Professional")]
@@ -45,12 +48,14 @@ namespace NexxtSchedule.Models
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_Description")]
         public string Description { get; set; }
 
+        [Index("Event_Company_ProfesionalId_Star_HourId_Index", 3, IsUnique = true)]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_DateStart")]
         public DateTime Start { get; set; }
 
+        [Index("Event_Company_ProfesionalId_Star_HourId_Index", 4, IsUnique = true)]
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_Hora")]

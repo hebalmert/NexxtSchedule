@@ -214,6 +214,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apellido.
+        /// </summary>
+        public static string Client_Model_LastName {
+            get {
+                return ResourceManager.GetString("Client_Model_LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Movil.
         /// </summary>
         public static string Client_Model_Movil {
@@ -228,6 +237,15 @@ namespace Resources {
         public static string Client_Model_Nacimiento {
             get {
                 return ResourceManager.GetString("Client_Model_Nacimiento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nombre.
+        /// </summary>
+        public static string Client_Model_Name {
+            get {
+                return ResourceManager.GetString("Client_Model_Name", resourceCulture);
             }
         }
         
@@ -813,6 +831,15 @@ namespace Resources {
         public static string HeadText_Model_Texto {
             get {
                 return ResourceManager.GetString("HeadText_Model_Texto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orden.
+        /// </summary>
+        public static string Hora_Model_HoraOrden {
+            get {
+                return ResourceManager.GetString("Hora_Model_HoraOrden", resourceCulture);
             }
         }
         

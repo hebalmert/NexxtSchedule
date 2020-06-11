@@ -94,7 +94,7 @@ namespace NexxtSchedule.Controllers
                     .Include(e=> e.Hour)
                     .Include(e=> e.Color)
                     .Include(e => e.Professional);
-                     return View(eventos.OrderBy(o=> o.Hour.Hora).ToList());
+                     return View(eventos.OrderByDescending(o=> o.Hour.Orden).ToList());
             }
             else
             {
@@ -103,7 +103,7 @@ namespace NexxtSchedule.Controllers
                     .Include(e => e.Hour)
                     .Include(e => e.Color)
                     .Include(e => e.Professional);
-                return View(eventos.OrderBy(o => o.Hour.Hora).ToList());
+                return View(eventos.OrderByDescending(o => o.Hour.Orden).ToList());
             }
         }
 

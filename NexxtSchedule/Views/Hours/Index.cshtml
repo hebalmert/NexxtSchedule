@@ -14,20 +14,26 @@
         <th>
             @Html.DisplayNameFor(model => model.Hora)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Orden)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hora)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.HourId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.HourId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.HourId })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Hora)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Orden)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.HourId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.HourId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.HourId })
+    </td>
+</tr>
 }
 
 </table>
