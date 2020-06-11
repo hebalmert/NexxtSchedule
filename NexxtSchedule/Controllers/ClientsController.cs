@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using NexxtSchedule.Classes;
 using NexxtSchedule.Models;
+using PagedList;
 
 namespace NexxtSchedule.Controllers
 {
@@ -17,8 +18,26 @@ namespace NexxtSchedule.Controllers
     {
         private NexxtCalContext db = new NexxtCalContext();
 
+        [HttpPost]
+        public JsonResult Search(string Prefix)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+
+            var Iclient = (from cliente in db.Clients
+                           where cliente.Cliente.StartsWith(Prefix) && cliente.CompanyId == user.CompanyId
+                           select new
+                           {
+                               label = cliente.Cliente,
+                               val = cliente.ClientId
+                           }).ToList();
+
+            return Json(Iclient);
+
+        }
+
         // GET: Clients
-        public ActionResult Index()
+        public ActionResult Index(int? clientid, int? page = null)
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
@@ -26,10 +45,21 @@ namespace NexxtSchedule.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            var clients = db.Clients.Where(c => c.CompanyId == user.CompanyId)
-                 .Include(c => c.Identification);
+            page = (page ?? 1);
+            if (clientid != null)
+            {
+                var clients = db.Clients.Where(c => c.CompanyId == user.CompanyId && c.ClientId == clientid)
+                      .Include(c => c.Identification);
 
-            return View(clients.OrderBy(o => o.Cliente).ToList());
+                return View(clients.OrderBy(o => o.Cliente).ToList().ToPagedList((int)page, 25));
+            }
+            else
+            {
+                var clients = db.Clients.Where(c => c.CompanyId == user.CompanyId)
+                      .Include(c => c.Identification);
+
+                return View(clients.OrderBy(o => o.Cliente).ToList().ToPagedList((int)page, 25));
+            }
         }
 
         // GET: Clients/Details/5
@@ -55,8 +85,8 @@ namespace NexxtSchedule.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            var client = new Client 
-            { 
+            var client = new Client
+            {
                 CompanyId = user.CompanyId,
                 Nacimiento = DateTime.Today
             };
