@@ -1,4 +1,6 @@
-﻿using NexxtSchedule.Models;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using NexxtSchedule.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +26,8 @@ namespace NexxtSchedule.Controllers
 
                 if (comActivo == false)
                 {
-                    return RedirectToAction("Login", "Account");
+                    AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                    return RedirectToAction("Index", "Home");
                 }
             }
 
@@ -36,6 +39,14 @@ namespace NexxtSchedule.Controllers
             ViewBag.Message = "Your application description page.";
 
             return View();
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
         }
 
         public ActionResult Contact()
