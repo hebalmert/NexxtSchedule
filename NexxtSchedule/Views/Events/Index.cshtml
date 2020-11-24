@@ -3,45 +3,41 @@
 @{
     ViewBag.Title = @Resources.Resource.Event_ViewIndex_Titulo1;
 }
-
+<br />
 @*<h2> @Resources.Resource.Event_ViewIndex_Titulo1</h2>*@
 
 <p></p>
 <div class="row">
-    <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading"><strong>Consulta de Citas</strong></div>
-            <div class="panel-body">
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-header"><strong>Consulta de Citas</strong></div>
+            <div class="card-body">
                 @using (Html.BeginForm("Index", "Events", FormMethod.Get))
                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="row">
                         <div class="col-md-5 mb-3">
-                            <label>Start</label>
-                            <div class="input-group date" style="width:150px">
-                                <input type="date" name="fecha" id="txtStart2" class="form-control" placeholder="Date" />
-                                <span class="input-group-addon datepicker-decades">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
+                            @*<label>Start</label>*@
+                            <div class="input-group date">
+                                <input type="date" name="fecha" id="txtStart2" class="form-control datepicker-decades" placeholder="Date" />
+
                             </div>
                         </div>
                         <div class="col-md-5 mb-3">
-                            <label>Profesional</label>
-                            <div class="form-horizontal">
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <input type="text" name="txt_search2" id="txt_search2" class="form-control" placeholder="Profesional" />
-                                        <input type="hidden" id="item_list2" name="profesionalid" /><br />
-                                    </div>
+                            @*<label>Profesional</label>*@
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" name="txt_search2" id="txt_search2" class="form-control" placeholder="Profesional" />
+                                    <input type="hidden" id="item_list2" name="profesionalid" /><br />
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2 mb-3">
-                            <label>ver</label>
+                            @*<label>Ver </label>*@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-warning btn-sm">
-                                    <i class="glyphicon glyphicon-search"></i>
+                                    <i class="fa fa-search"></i>
 
                                 </button>
                             </div>
@@ -51,17 +47,17 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading"><strong>Nueva Consulta</strong></div>
-            <div class="panel-body">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header"><strong>Nueva Consulta</strong></div>
+            <div class="card-body">
                 @using (Html.BeginForm("Create", "Events", FormMethod.Get))
                 {
                     @Html.AntiForgeryToken()
                     <div class="row">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-8 mb-2">
 
-                            <label>Paciente</label>
+                            @*<label>Paciente</label>*@
                             <div class="form-horizontal">
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="form-group">
@@ -70,23 +66,23 @@
                                         <input type="hidden" id="item_list" name="clienteId" /><br />
 
                                         @*<button type="submit" class="btn btn-primary btn-sm">
-                                            <i class="glyphicon glyphicon-plus"></i>
-                                            @Resources.Resource.ButtonNew
-                                        </button>*@
+                                                <i class="glyphicon glyphicon-plus"></i>
+                                                @Resources.Resource.ButtonNew
+                                            </button>*@
                                         @*<input type="submit" value="Buscar" class="btn btn-warning btn-sm" />*@
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-2">
-                            <label>Nuevo</label>
+                        <div class="col-md-4 mb-2">
+                            @*<label>Nuevo</label>*@
                             <div class="form-horizontal">
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="form-group">
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
                                         <button type="submit" class="btn btn-primary btn-sm">
-                                            <i class="glyphicon glyphicon-plus"></i>
-                                            @*@Resources.Resource.ButtonNew*@
+                                            <i class="fa fa-plus"></i>
+                                            Nuevo
                                         </button>
                                     </div>
                                 </div>
@@ -220,28 +216,48 @@
                     }
                 }
 
-            <td>
-                <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
-            '@Url.Action("Details", "Events", new { id = item.EventId})'">
-                    <span class="glyphicon glyphicon-list"></span>
-                </button>
-                @if (item.Asistencia == false)
-                {
-                    <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
-                        '@Url.Action("Edit", "Events", new { id = item.EventId})'">
-                        <span class="glyphicon glyphicon-pencil"></span>
+                <td>
+                    @*<button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+                        '@Url.Action("Details", "Events", new { id = item.EventId})'">
+                                <span class="glyphicon glyphicon-list"></span>
+                            </button>*@
+                    <button title="Detalle" class="badge badge-info" onclick="location.href =
+                   '@Url.Action("Details", "Events", new { id = item.EventId})'">
+                        <i class="fa fa-clipboard-list"></i>
                     </button>
 
-                    <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
-                         '@Url.Action("Delete", "Events", new { id = item.EventId})'">
-                        <span class="glyphicon glyphicon-trash"></span>
-                    </button>
+                    @if (item.Asistencia == false)
+                    {
+                        <button title="Detalle" class="badge badge-warning" onclick="location.href =
+                           '@Url.Action("Edit", "Events", new { id = item.EventId})'">
+                            <i class="fa fa-pencil-alt"></i>
+                        </button>
 
-                    <a title="Asistio" href="@Url.Action("Asistio", new { id = item.EventId })" class="btn btn-success btn-sm" onclick="return confirm('Desea Anular esta Nota Cobro?')">
-                        <span class="glyphicon glyphicon-check"></span>
-                    </a>
-                }
-            </td>
+                        @*<button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+                                '@Url.Action("Edit", "Events", new { id = item.EventId})'">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>*@
+
+                        <button title="Detalle" class="badge badge-danger" onclick="location.href =
+                             '@Url.Action("Delete", "Events", new { id = item.EventId})'">
+                            <i class="fa fa-trash"></i>
+                        </button>
+
+                        @*<button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+                             '@Url.Action("Delete", "Events", new { id = item.EventId})'">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>*@
+
+
+                        <a title="Asistio" href="@Url.Action("Asistio", new { id = item.EventId })" class="badge badge-success" onclick="return confirm('Desea Confirmar Asistencia?')">
+                            <i class="fa fa-check"></i>
+                        </a>
+
+                        @*<a title="Asistio" href="@Url.Action("Asistio", new { id = item.EventId })" class="btn btn-success btn-sm" onclick="return confirm('Desea Anular esta Nota Cobro?')">
+                                <span class="glyphicon glyphicon-check"></span>
+                            </a>*@
+                    }
+                </td>
             </tr>
         }
 
@@ -260,10 +276,10 @@
     @*<script src="~/Scripts/bootstrap-datetimepicker.js"></script>*@
 
     @*<script>
-        $('#txtStart, #txtStart2').datetimepicker({
-            format: 'DD/MM/YYYY'
-        });
-    </script>*@
+            $('#txtStart, #txtStart2').datetimepicker({
+                format: 'DD/MM/YYYY'
+            });
+        </script>*@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#txt_search").autocomplete({

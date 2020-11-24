@@ -3,16 +3,16 @@
 @{
     ViewBag.Title = @Resources.Resource.Company_ViewIndex_Titulo1;
 }
-
+<br />
     <h2>@Resources.Resource.Company_ViewIndex_Titulo1</h2>
 
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-    <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
-            '@Url.Action("Create", "Companies", new { })'">
-        <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
-    </button>
-</p>
+    <p>
+        @*@Html.ActionLink("Create New", "Create")*@
+        <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+            <i class="fa fa-plus"></i>
+            @Resources.Resource.ButtonNew
+        </button>
+    </p>
 <table class="table">
     <tr>
         <th>
@@ -72,24 +72,20 @@
         @Html.DisplayFor(modelItem => item.Activo)
     </td>
     <td>
-        @*@Html.ActionLink("Edit", "Edit", new { id = item.CompanyId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.CompanyId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.CompanyId })*@
+        <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", new { id = item.CompanyId})'">
+            <i class="fa fa-pencil-alt"></i>
+        </button>
 
-            <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
-            '@Url.Action("Edit", "Companies", new { id = item.CompanyId})'">
-                <span class="glyphicon glyphicon-pencil"></span> 
-            </button>
+        <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", new { id = item.CompanyId})'">
+            <i class="fa fa-clipboard-list"></i>
+        </button>
 
-            <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
-            '@Url.Action("Details", "Companies", new { id = item.CompanyId})'">
-                <span class="glyphicon glyphicon-list"></span> 
-            </button>
-
-            <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
-            '@Url.Action("Delete", "Companies", new { id = item.CompanyId})'">
-                <span class="glyphicon glyphicon-trash"></span> 
-            </button>
+        <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+                   '@Url.Action("Delete", new { id = item.CompanyId})'">
+            <i class="fa fa-trash"></i>
+        </button>
 
     </td>
 </tr>

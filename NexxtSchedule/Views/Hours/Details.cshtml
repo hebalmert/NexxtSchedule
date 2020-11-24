@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Details";
 }
-
+<br />
 <h2>Details</h2>
 
 <div>
@@ -27,6 +27,13 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.HourId }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+        <i class="fa fa-backspace"></i>
+        @Resources.Resource.ButtonBack
+    </button>
+
+    <button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("Edit", new { id = Model.HourId })'">
+        <i class="fa fa-pencil-alt"></i>
+        @Resources.Resource.ButtonEdit
+    </button>
 </p>

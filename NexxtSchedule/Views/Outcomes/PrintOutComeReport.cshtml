@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = @Resources.Resource.Outcome_IndexView_Titulo1;
 }
-
+<br />
 <h2>@Resources.Resource.Outcome_IndexView_Titulo1</h2>
 
 @using (Html.BeginForm())
@@ -34,14 +34,21 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 @*<input type="submit" value=@Resources.Resource.ButtonReport class="btn btn-primary" /> |
-                @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success" })*@
+        @Html.ActionLink(@Resources.Resource.ButtonBack, "Index", new { }, new { @class = "btn btn-success" })*@
 
-                <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
-                    <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
+                <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+                    <i class="fa fa-backspace"></i>
+                    @Resources.Resource.ButtonBack
                 </button>
+
                 <button type="submit" class="btn btn-primary btn-sm">
-                    <span class="glyphicon glyphicon-print"></span> @Resources.Resource.ButtonReport
+                    <i class="fa fa-print"></i>
+                    @Resources.Resource.ButtonReport
                 </button>
+
+                @*<button type="submit" class="btn btn-primary btn-sm">
+                    <span class="glyphicon glyphicon-print"></span> @Resources.Resource.ButtonReport
+                </button>*@
             </div>
         </div>
     </div>

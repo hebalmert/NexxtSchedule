@@ -1,121 +1,136 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <meta name="Keywords" content="Software Agenda de Citas, Agenda, Schedule, Organizador, Software Profesionales, Profesionales Comisiones">
+    <meta name="Description" content="Organizar para Profesionales de cualquier tipo, permite cobrar servicios y realizar pagos por comisiones a cada profesional.">
+    <meta name="Robots" content="all">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Nexxt Calendar</title>
+
+
+    <link rel="icon" href="~/Content/Imagen/SiteLogo.png" type="image/png" />
+
+    <link href="~/Content/all.min.css" rel="stylesheet" />
+
+    <title>@ViewBag.Title - Software Agenda de Citas</title>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("NexxtCalendar", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
-                    @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        @Html.ActionLink("NexxtDent", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Administrador
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Compania", "Index", "Companies")</li>
-                                <li>@Html.ActionLink("Usuarios", "Index", "Users")</li>
-                                <li>@Html.ActionLink("Pais", "Index", "Countries")</li>
-                                <li>@Html.ActionLink("Nivel Precio", "Index", "LevelPrices")</li>
-                                <li>@Html.ActionLink("Horas", "Index", "Hours")</li>
-                                <li>@Html.ActionLink("Color", "Index", "Colors")</li>
-                            </ul>
-                        </li>
-                    }
-                    @if (User.IsInRole("User") | User.IsInRole("Profe"))
-                    {
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Archivo
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                @if (User.IsInRole("User"))
-                                {
-                                    <li>@Html.ActionLink(@Resources.Resource.Menu_Archivo_Profesional, "Index", "Professionals")</li>
-                                }
-                                <li>@Html.ActionLink(@Resources.Resource.Menu_Archivo_Clients, "Index", "Clients")</li>
-                            </ul>
-                        </li>
-                    }
-                    @if (User.IsInRole("User") | User.IsInRole("Profe"))
-                    {
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Agenda
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink(@Resources.Resource.Menu_Agenda_Calendar, "Index", "Events")</li>
-                                @*<li>@Html.ActionLink(@Resources.Resource.Menu_Agenda_Calendar, "Index", "Calendar")</li>*@
-                            </ul>
-                        </li>
-                    }
-                    @if (User.IsInRole("User") | User.IsInRole("Profe"))
-                    {
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Administracion
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                @if (User.IsInRole("User"))
-                                {
-                                    <li>@Html.ActionLink(@Resources.Resource.Menu_Administracion_Category, "Index", "ServiceCategories")</li>
-                                    <li>@Html.ActionLink(@Resources.Resource.Menu_Administracion_Service, "Index", "Services")</li>
-                                }
-                                <li>@Html.ActionLink(@Resources.Resource.Menu_Adminitracion_CobroDirecto, "Create", "DirectPayments")</li>
-                                <li><hr noshade="noshade" /></li>
-                                @if (User.IsInRole("User"))
-                                {
-                                    <li>@Html.ActionLink(@Resources.Resource.Menu_Administracion_CxProfesional, "Index", "DirectGenerals")</li>
-                                    <li>@Html.ActionLink(@Resources.Resource.Menu_Administracion_LiquidarProfesionales, "Index", "PayProfessionals")</li>
-                                    <li><hr noshade="noshade" /></li>
-                                    <li>@Html.ActionLink(@Resources.Resource.MenuAdmin_Egresos, "Index", "Outcomes")</li>
-                                }
-                            </ul>
-                        </li>
-                    }
-                    @if (User.IsInRole("User"))
-                    {
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Sistema
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink(@Resources.Resource.Menu_Sistema_Consecutivos, "Index", "Registers")</li>
-                                <li>@Html.ActionLink(@Resources.Resource.Menu_Sistema_Encabezado, "Index", "HeadTexts")</li>
-                                <li>@Html.ActionLink(@Resources.Resource.Menu_Sistema_Indetificador, "Index", "Identifications")</li>
-                                <li>@Html.ActionLink(@Resources.Resource.Menu_Sistema_Impuesto, "Index", "Taxes")</li>
-                            </ul>
-                        </li>
-                    }
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item active">
+                    @Html.ActionLink("NexxtCalendar", "Index", "Home", new { }, new { @class = "nav-link" })
+                </li>
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Administrador
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @Html.ActionLink("Compañia", "Index", "Companies", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Usuarios", "Index", "Users", new { }, new { @class = "dropdown-item" })
+                            <div class="dropdown-divider"></div>
+                            @Html.ActionLink("Pais", "Index", "Countries", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Level Price", "Index", "LevelPrices", new { }, new { @class = "dropdown-item" })
+                            <div class="dropdown-divider"></div>
+                            @Html.ActionLink("Horas", "Index", "Hours", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Color", "Index", "Colors", new { }, new { @class = "dropdown-item" })
+
+                        </div>
+                    </li>
+                }
+
+                @if (User.IsInRole("User") | User.IsInRole("Profe"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Archivo
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @if (User.IsInRole("User"))
+                            {
+                                @Html.ActionLink(@Resources.Resource.Menu_Archivo_Profesional, "Index", "Professionals", new { }, new { @class = "dropdown-item" })
+                            }
+                            @Html.ActionLink(@Resources.Resource.Menu_Archivo_Clients, "Index", "Clients", new { }, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+                }
+
+                @if (User.IsInRole("User") | User.IsInRole("Profe"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Agenda
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            @Html.ActionLink(@Resources.Resource.Menu_Agenda_Calendar, "Index", "Events", new { }, new { @class = "dropdown-item" })
+
+                        </div>
+                    </li>
+                }
+
+                @if (User.IsInRole("User") | User.IsInRole("Profe"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Administracion
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @if (User.IsInRole("User"))
+                            {
+                                @Html.ActionLink(@Resources.Resource.Menu_Administracion_Category, "Index", "ServiceCategories", new { }, new { @class = "dropdown-item" })
+                                @Html.ActionLink(@Resources.Resource.Menu_Administracion_Service, "Index", "Services", new { }, new { @class = "dropdown-item" })
+                            }
+                            @Html.ActionLink(@Resources.Resource.Menu_Adminitracion_CobroDirecto, "Create", "DirectPayments", new { }, new { @class = "dropdown-item" })
+                            <div class="dropdown-divider"></div>
+                            @if (User.IsInRole("User"))
+                            {
+                                @Html.ActionLink(@Resources.Resource.Menu_Administracion_CxProfesional, "Index", "DirectGenerals", new { }, new { @class = "dropdown-item" })
+                                @Html.ActionLink(@Resources.Resource.Menu_Administracion_LiquidarProfesionales, "Index", "PayProfessionals", new { }, new { @class = "dropdown-item" })
+                                <div class="dropdown-divider"></div>
+                                @Html.ActionLink(@Resources.Resource.MenuAdmin_Egresos, "Index", "Outcomes", new { }, new { @class = "dropdown-item" })
+                            }
+                        </div>
+                    </li>
+                }
+
+                @if (User.IsInRole("User"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sistema
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @Html.ActionLink(@Resources.Resource.Menu_Sistema_Consecutivos, "Index", "Registers", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink(@Resources.Resource.Menu_Sistema_Encabezado, "Index", "HeadTexts", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink(@Resources.Resource.Menu_Sistema_Indetificador, "Index", "Identifications", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink(@Resources.Resource.Menu_Sistema_Impuesto, "Index", "Taxes", new { }, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+                }
+
+                <li class="nav-item active">
+                    @Html.Partial("_LoginPartial")
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />

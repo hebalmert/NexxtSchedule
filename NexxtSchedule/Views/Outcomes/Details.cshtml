@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Detalle";
 }
-
+<br />
 <h2>Detalle</h2>
 
 
@@ -105,7 +105,10 @@
                         @if (Model.cerrado == false)
                         {
                             <td align="right">
-                                @Html.ActionLink("Borrar", "DeleteItems", new { id = item.OutcomeDetailId }, new { @class = "btn btn-danger", onclick = "return confirm('Desea Eliminar este Registro?')" })
+                                <a title="Borrar" href="@Url.Action("DeleteItems", new { id = item.OutcomeDetailId })" class="btn btn-danger btn-sm" onclick="return confirm('Desea Eliminar este Registro?')">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                                @*@Html.ActionLink("Borrar", "DeleteItems", new { id = item.OutcomeDetailId }, new { @class = "btn btn-danger", onclick = "return confirm('Desea Eliminar este Registro?')" })*@
                             </td>
                         }
                     </tr>
@@ -140,11 +143,20 @@
     </button>
     @if (Model.cerrado == false)
     {
-        @Html.ActionLink("Agregar Items", "AddItems", "Outcomes", new { id = Model.OutcomeId }, new { @class = "dialog-window btn btn-warning btn-sm" })}
+        <a title="Editar" href="@Url.Action("AddItems", "Outcomes", new { id = Model.OutcomeId })" class="dialog-window btn btn-warning btn-sm">
+            <i class="fa fa-money-bill-alt"></i>
+            Agregar Items
+        </a>
+        @*@Html.ActionLink("Agregar Items", "AddItems", "Outcomes", new { id = Model.OutcomeId }, new { @class = "dialog-window btn btn-warning btn-sm" })}*@
+    }
     @if (Model.cerrado == false)
     {
-        @Html.ActionLink("Cerrar", "CloseIt", new { idOut = Model.OutcomeId }, new { @class = "btn btn-info btn-sm", onclick = "return confirm('Desea Cerrar el Comprobante?')" })
+        <a title="Borrar" href="@Url.Action("CloseIt", new { id = Model.OutcomeId })" class="btn btn-info btn-sm" onclick="return confirm('Desea Cerrar el Comprobante?')">
+            <i class="fa fa-trash"></i>
+        </a>
+        @*@Html.ActionLink("Cerrar", "CloseIt", new { idOut = Model.OutcomeId }, new { @class = "btn btn-info btn-sm", onclick = "return confirm('Desea Cerrar el Comprobante?')" })*@
     }
+
     @*<button type="button" class="btn btn-info btn-sm" onclick="location.href ='@Url.Action("CloseIt", new { idOut = Model.OutcomeId})'">
             <span class="glyphicon glyphicon-ok"></span> @Resources.Resource.ButtonClose
         </button>*@

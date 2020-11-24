@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = @Resources.Resource.Register_ViewIndex_Titulo1;
 }
-
+<br />
     <h2>@Resources.Resource.Register_ViewIndex_Titulo1</h2>
 
     <p>
@@ -39,20 +39,20 @@
                 @Html.DisplayFor(modelItem => item.Compobantepago)
             </td>
             <td>
-                <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
-                    '@Url.Action("Edit", "Registers", new { id = item.RegisterId})'">
-                    <span class="glyphicon glyphicon-pencil"></span>
+                <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", new { id = item.RegisterId})'">
+                    <i class="fa fa-pencil-alt"></i>
                 </button>
 
-                <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
-                    '@Url.Action("Details", "Registers", new { id = item.RegisterId})'">
-                    <span class="glyphicon glyphicon-list"></span>
+                <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", new { id = item.RegisterId})'">
+                    <i class="fa fa-clipboard-list"></i>
                 </button>
 
                 @*<button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
-                    '@Url.Action("Delete", "Registers", new { id = item.RegisterId})'">
-                        <span class="glyphicon glyphicon-trash"></span>
-                    </button>*@
+        '@Url.Action("Delete", "Registers", new { id = item.RegisterId})'">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>*@
             </td>
         </tr>
     }

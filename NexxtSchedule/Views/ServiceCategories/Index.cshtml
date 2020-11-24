@@ -3,13 +3,13 @@
 @{
     ViewBag.Title = @Resources.Resource.ServiceCategory_ViewIndex_Titulo1;
 }
-
+<br />
     <h2>@Resources.Resource.ServiceCategory_ViewIndex_Titulo1</h2>
 
     <p>
-        <button title=@Resources.Resource.ButtonNew class="btn btn-primary btn-sm" onclick="location.href =
-            '@Url.Action("Create", "ServiceCategories", new { })'">
-            <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.ButtonNew
+        <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+            <i class="fa fa-plus"></i>
+            @Resources.Resource.ButtonNew
         </button>
     </p>
 <table class="table">
@@ -32,19 +32,19 @@
             @Html.DisplayFor(modelItem => item.Detalle)
         </td>
         <td>
-            <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
-            '@Url.Action("Edit", "ServiceCategories", new { id = item.ServiceCategoryId})'">
-                <span class="glyphicon glyphicon-pencil"></span>
+            <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", new { id = item.ServiceCategoryId})'">
+                <i class="fa fa-pencil-alt"></i>
             </button>
 
-            <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
-            '@Url.Action("Details", "ServiceCategories", new { id = item.ServiceCategoryId})'">
-                <span class="glyphicon glyphicon-list"></span>
+            <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", new { id = item.ServiceCategoryId})'">
+                <i class="fa fa-clipboard-list"></i>
             </button>
 
-            <button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
-            '@Url.Action("Delete", "ServiceCategories", new { id = item.ServiceCategoryId})'">
-                <span class="glyphicon glyphicon-trash"></span>
+            <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+                    '@Url.Action("Delete", new { id = item.ServiceCategoryId})'">
+                <i class="fa fa-trash"></i>
             </button>
         </td>
     </tr>

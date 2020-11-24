@@ -46,6 +46,7 @@ namespace NexxtSchedule.Controllers
             }
 
             page = (page ?? 1);
+
             if (clientid != null)
             {
                 var clients = db.Clients.Where(c => c.CompanyId == user.CompanyId && c.ClientId == clientid)

@@ -3,11 +3,14 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<br />
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+        <i class="fa fa-plus"></i>
+        @Resources.Resource.ButtonNew
+    </button>
 </p>
 <table class="table">
     <tr>
@@ -23,9 +26,20 @@
             @Html.DisplayFor(modelItem => item.ColorDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ColorId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ColorId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ColorId })
+            <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", new { id = item.ColorId})'">
+                <i class="fa fa-pencil-alt"></i>
+            </button>
+
+            <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", new { id = item.ColorId})'">
+                <i class="fa fa-clipboard-list"></i>
+            </button>
+
+            <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+                   '@Url.Action("Delete", new { id = item.ColorId})'">
+                <i class="fa fa-trash"></i>
+            </button>
         </td>
     </tr>
 }
