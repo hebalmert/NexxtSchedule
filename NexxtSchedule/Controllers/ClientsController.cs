@@ -16,7 +16,7 @@ namespace NexxtSchedule.Controllers
 
     public class ClientsController : Controller
     {
-        private NexxtCalContext db = new NexxtCalContext();
+        private readonly NexxtCalContext db = new NexxtCalContext();
 
         [HttpPost]
         public JsonResult Search(string Prefix)
