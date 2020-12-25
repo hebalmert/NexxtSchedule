@@ -19,17 +19,17 @@ namespace NexxtSchedule.Models
         [Display(ResourceType = typeof(Resource), Name = "Client_Model_Compania")]
         public int CompanyId { get; set; }
 
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [MaxLength(100, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
         [Index("Client_Cliente_IdentificationNumber_Company_Index", 2, IsUnique = true)]
         [Display(ResourceType = typeof(Resource), Name = "Client_Model_Cliente")]
         public string Cliente { get; set; }
 
-        //[Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [MaxLength(50, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
         [Display(ResourceType = typeof(Resource), Name = "Client_Model_Name")]
         public string FirstName { get; set; }
 
-        //[Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
+        
         [MaxLength(50, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
         [Display(ResourceType = typeof(Resource), Name = "Client_Model_LastName")]
         public string LastName { get; set; }

@@ -110,6 +110,20 @@
                     </li>
                 }
 
+                @if (User.IsInRole("User") | User.IsInRole("Profe"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Reportes
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            @Html.ActionLink(@Resources.Resource.Menu_Reportes_AsistenciaClientes, "View_ReportxDate", "Events", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink(@Resources.Resource.Menu_Reportes_AsistenciaGeneral, "View_ReportxDateOnly", "Events", new { }, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+                }
+
                 @if (User.IsInRole("User"))
                 {
                     <li class="nav-item dropdown">

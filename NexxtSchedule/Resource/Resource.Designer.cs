@@ -1006,6 +1006,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Asistencia por Paciente.
+        /// </summary>
+        public static string Menu_Reportes_AsistenciaClientes {
+            get {
+                return ResourceManager.GetString("Menu_Reportes_AsistenciaClientes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Asistencia General.
+        /// </summary>
+        public static string Menu_Reportes_AsistenciaGeneral {
+            get {
+                return ResourceManager.GetString("Menu_Reportes_AsistenciaGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Consecutivos.
         /// </summary>
         public static string Menu_Sistema_Consecutivos {
@@ -1119,6 +1137,15 @@ namespace Resources {
         public static string Msg_DoubleData {
             get {
                 return ResourceManager.GetString("Msg_DoubleData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Complete Nombre o Apellido.
+        /// </summary>
+        public static string Msg_ErrorNameLastName {
+            get {
+                return ResourceManager.GetString("Msg_ErrorNameLastName", resourceCulture);
             }
         }
         

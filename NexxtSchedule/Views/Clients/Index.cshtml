@@ -9,9 +9,16 @@
 <br />
 <div class="row">
     <div class="col-md-6">
-        <div class="card">
-            <div class="card-header"><strong>Nuevo Cliente</strong></div>
+        <div class="card shadow">
             <div class="card-body">
+                <p></p>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <strong>Nuevo Cliente</strong>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-horizontal">
                     <div class="form-group">
                         <div class="col-md-12">
@@ -31,9 +38,8 @@
         {
             @Html.AntiForgeryToken()
             <div class="row">
-                <div class="col-md-8 mb-2">
-                    <div class="card">
-                        <div class="card-header"><strong>Buscar Cliente</strong></div>
+                <div class="col-md-12 mb-2">
+                    <div class="card shadow">
                         <div class="card-body">
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="col-md-12">
@@ -52,7 +58,7 @@
         }
     </div>
 </div>
-<p></p>
+<br />
 <table class="table table-striped">
     <thead class="thead-light">
         <tr>

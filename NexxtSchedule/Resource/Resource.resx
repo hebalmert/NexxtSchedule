@@ -441,6 +441,12 @@
   <data name="Menu_Link3" xml:space="preserve">
     <value>Comprar</value>
   </data>
+  <data name="Menu_Reportes_AsistenciaClientes" xml:space="preserve">
+    <value>Asistencia por Paciente</value>
+  </data>
+  <data name="Menu_Reportes_AsistenciaGeneral" xml:space="preserve">
+    <value>Asistencia General</value>
+  </data>
   <data name="Menu_Sistema_Consecutivos" xml:space="preserve">
     <value>Consecutivos</value>
   </data>
@@ -473,6 +479,9 @@
   </data>
   <data name="Msg_DoubleData" xml:space="preserve">
     <value>Existe un Registro con el mismo Valor</value>
+  </data>
+  <data name="Msg_ErrorNameLastName" xml:space="preserve">
+    <value>Complete Nombre o Apellido</value>
   </data>
   <data name="Msg_MaxLength" xml:space="preserve">
     <value>El Campo {0} debe ser menor de {1} characters</value>

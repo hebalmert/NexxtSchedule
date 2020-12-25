@@ -15,8 +15,92 @@ namespace NexxtSchedule.Controllers
 
     public class EventsController : Controller
     {
-        private NexxtCalContext db = new NexxtCalContext();
+        private readonly NexxtCalContext db = new NexxtCalContext();
 
+       
+        // GET: Events/Create
+        public ActionResult View_ReportxDateOnly()
+        {
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var reportXfecha = new View_DateReportOnly
+            {
+                CompanyId = user.CompanyId,
+                DateInicio = DateTime.Now,
+                DateFin = DateTime.Now
+            };
+
+            return View(reportXfecha);
+        }
+
+        // POST: Events/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult View_ReportxDateOnly(View_DateReportOnly modelDateReportonly)
+        {
+
+            return RedirectToAction("View_ReportAssistOnly", new { DateStar = modelDateReportonly.DateInicio, DateEnd = modelDateReportonly.DateFin, IdCompany = modelDateReportonly.CompanyId });
+        }
+
+        // GET: Events
+        public ActionResult View_ReportAssistOnly(DateTime DateStar, DateTime DateEnd, int IdCompany)
+        {
+            var eventos = db.Events.Where(c => c.CompanyId == IdCompany && c.Start >= DateStar && c.Start <= DateEnd)
+                .Include(e => e.Client)
+                .Include(e => e.Hour)
+                .Include(e => e.Color)
+                .Include(e => e.Professional);
+
+            return View(eventos.OrderByDescending(o => o.Start).ToList());
+        }
+
+        // GET: Events/Create
+        public ActionResult View_ReportxDate()
+        {
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var reportXfecha = new View_Model_DateReport
+            {
+                CompanyId = user.CompanyId,
+                DateInicio = DateTime.Now,
+                DateFin = DateTime.Now
+            };
+
+            return View(reportXfecha);
+        }
+
+        // POST: Events/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult View_ReportxDate(View_Model_DateReport modelDateReport)
+        {
+
+            return RedirectToAction("View_ReportAssist", new { DateStar = modelDateReport.DateInicio, DateEnd = modelDateReport.DateFin, IdClient = modelDateReport.ClientId, IdCompany = modelDateReport.CompanyId });
+        }
+
+
+        // GET: Events
+        public ActionResult View_ReportAssist(DateTime DateStar, DateTime DateEnd, int IdClient, int IdCompany)
+        {
+                var eventos = db.Events.Where(c => c.CompanyId == IdCompany && c.ClientId == IdClient && c.Start >= DateStar && c.Start <= DateEnd)
+                    .Include(e => e.Client)
+                    .Include(e => e.Hour)
+                    .Include(e => e.Color)
+                    .Include(e => e.Professional);
+                return View(eventos.OrderByDescending(o => o.Start).ToList());
+        }
 
         // GET: Events/Delete/5
         public ActionResult Asistio(int? id)
@@ -65,7 +149,7 @@ namespace NexxtSchedule.Controllers
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
 
             var clientes = (from client in db.Clients
-                               where client.Cliente.StartsWith(Prefix) && client.CompanyId == user.CompanyId
+                               where client.Cliente.Contains(Prefix) && client.CompanyId == user.CompanyId
                                select new
                                {
                                    label = client.Cliente,

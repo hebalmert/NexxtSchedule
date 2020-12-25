@@ -441,6 +441,12 @@
   <data name="Menu_Button3" xml:space="preserve">
     <value>How Buy</value>
   </data>
+  <data name="Menu_Reportes_AsistenciaClientes" xml:space="preserve">
+    <value>Assist by Client</value>
+  </data>
+  <data name="Menu_Reportes_AsistenciaGeneral" xml:space="preserve">
+    <value>General Assist</value>
+  </data>
   <data name="Menu_Sistema_Consecutivos" xml:space="preserve">
     <value>Consecutive</value>
   </data>
@@ -473,6 +479,9 @@
   </data>
   <data name="Msg_DoubleData" xml:space="preserve">
     <value>There is a Registry with the same Value</value>
+  </data>
+  <data name="Msg_ErrorNameLastName" xml:space="preserve">
+    <value>Most Complete Name o Lastname</value>
   </data>
   <data name="Msg_MaxLength" xml:space="preserve">
     <value>The Field {0} must be less than {1} Caracteres</value>

@@ -1,0 +1,86 @@
+﻿@model IEnumerable<NexxtSchedule.Models.Event>
+
+@{
+    ViewBag.Title = "Historial Paciente";
+}
+<br />
+<h2>Historial Asistencia por Paciente</h2>
+<p>
+    <button title="" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("View_ReportxDate", new { })'">
+        <i class="fa fa-backspace"></i>
+        @Resources.Resource.ButtonBack
+    </button>
+</p>
+<br />
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Client.Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Start)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Professional.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Asistencia)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @{
+        int AssistYex = 0;
+        int AssistNo = 0;
+        int registros = 0;
+    }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Cliente)
+            </td>
+            <td>
+                @Convert.ToDateTime(item.Start).ToString("dd/MM/yyyy")
+                @*@Html.DisplayFor(modelItem => item.Start)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Professional.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Asistencia)
+            </td>
+            @{
+                if (item.Asistencia == true)
+                {
+                    AssistYex += +1;
+                }
+                else
+                {
+                    AssistNo += +1;
+                }
+                registros += +1;
+            }
+        </tr>
+    }
+    <tr>
+    </tr>
+    <tr>
+        <td>
+            <strong>Total</strong>
+        </td>
+
+        <td>
+            <strong>Citas:@registros</strong>
+        </td>
+
+        <td align="left">
+            <strong>No Asistio:@AssistNo</strong>
+        </td>
+
+        <td align="left">
+            <strong>Si Asistio:@AssistYex</strong>
+        </td>
+    </tr>
+</table>

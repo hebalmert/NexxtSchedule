@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using NexxtSchedule.Classes;
@@ -25,7 +26,7 @@ namespace NexxtSchedule.Controllers
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
 
             var Iclient = (from cliente in db.Clients
-                           where cliente.Cliente.StartsWith(Prefix) && cliente.CompanyId == user.CompanyId
+                           where cliente.Cliente.Contains(Prefix) && cliente.CompanyId == user.CompanyId
                            select new
                            {
                                label = cliente.Cliente,
@@ -102,17 +103,23 @@ namespace NexxtSchedule.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Client client)
+        public async Task<ActionResult> Create(Client client)
         {
+            client.Cliente = client.FirstName + " " + client.LastName;
+
             if (ModelState.IsValid)
-            {
+            {      
                 db.Clients.Add(client);
                 try
                 {
-                    string n1 = client.FirstName;
-                    string n2 = client.LastName;
-                    client.Cliente = n1 + " " + n2;
-                    db.SaveChanges();
+                    if (client.FirstName == null || client.LastName == null)
+                    {
+                        ModelState.AddModelError(string.Empty, (@Resources.Resource.Msg_ErrorNameLastName));
+                        ViewBag.IdentificationId = new SelectList(ComboHelper.GetIdentifications(client.CompanyId), "IdentificationId", "TipoDocumento", client.IdentificationId);
+                        return View(client);
+                    }
+
+                    await db.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)
@@ -131,6 +138,7 @@ namespace NexxtSchedule.Controllers
             }
 
             ViewBag.IdentificationId = new SelectList(ComboHelper.GetIdentifications(client.CompanyId), "IdentificationId", "TipoDocumento", client.IdentificationId);
+
             return View(client);
         }
 
@@ -156,18 +164,22 @@ namespace NexxtSchedule.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Client client)
+        public async Task<ActionResult> Edit(Client client)
         {
+            client.Cliente = client.FirstName + " " + client.LastName;
             if (ModelState.IsValid)
             {
-                string n1 = client.FirstName;
-                string n2 = client.LastName;
-                client.Cliente = n1 + " " + n2;
+                if (client.FirstName == null || client.LastName == null)
+                {
+                    ModelState.AddModelError(string.Empty, (@Resources.Resource.Msg_ErrorNameLastName));
+                    ViewBag.IdentificationId = new SelectList(ComboHelper.GetIdentifications(client.CompanyId), "IdentificationId", "TipoDocumento", client.IdentificationId);
+                    return View(client);
+                }
 
                 db.Entry(client).State = EntityState.Modified;
                 try
                 {
-                    db.SaveChanges();
+                    await db.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)
@@ -196,7 +208,7 @@ namespace NexxtSchedule.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
+            var client = db.Clients.Find(id);
             if (client == null)
             {
                 return HttpNotFound();
@@ -209,7 +221,7 @@ namespace NexxtSchedule.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Client client = db.Clients.Find(id);
+            var client = db.Clients.Find(id);
             db.Clients.Remove(client);
             try
             {
