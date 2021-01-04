@@ -105,8 +105,17 @@ namespace NexxtSchedule.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Client client)
         {
-            client.Cliente = client.FirstName + " " + client.LastName;
+            if (client.FirstName == null || client.LastName == null)
+            {
+                {
+                    ModelState.AddModelError(string.Empty, ("Es Obligatorio el Nombre y el Apellido"));
+                    ViewBag.IdentificationId = new SelectList(ComboHelper.GetIdentifications(client.CompanyId), "IdentificationId", "TipoDocumento", client.IdentificationId);
 
+                    return View(client);
+                }
+            }
+
+            client.Cliente = client.FirstName + " " + client.LastName;
             if (ModelState.IsValid)
             {      
                 db.Clients.Add(client);
@@ -166,6 +175,16 @@ namespace NexxtSchedule.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(Client client)
         {
+            if (client.FirstName == null || client.LastName == null)
+            {
+                {
+                    ModelState.AddModelError(string.Empty, ("Es Obligatorio el Nombre y el Apellido"));
+                    ViewBag.IdentificationId = new SelectList(ComboHelper.GetIdentifications(client.CompanyId), "IdentificationId", "TipoDocumento", client.IdentificationId);
+                    
+                    return View(client);
+                }
+            }
+
             client.Cliente = client.FirstName + " " + client.LastName;
             if (ModelState.IsValid)
             {
